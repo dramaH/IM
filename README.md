@@ -4,7 +4,7 @@ a rich and simple IM
 - frontend 
     - `vue : 2.0+`
     - `google-protobuf : 3.15.0+ `
-    - `Prettier`
+ 
 - service
     - `java : 1.8`
     - `springboot : 2.4.4`
