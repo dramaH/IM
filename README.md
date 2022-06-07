@@ -25,7 +25,7 @@ Modern browsers and Internet Explorer 10+.
 | IE10, IE11, Edge                                                                                                                                                                                                | last 2 versions                                                                                                                                                                                                   | last 2 versions                                                                                                                                                                                               | last 2 versions                                                                                                                                                                                               |
 
 ### License
+MIT 
 
-Copyright (c) 2015-present CloudCore
+Copyright (c) 2022 dramaH
 
----
