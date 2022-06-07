@@ -1,2 +1,2 @@
-# im-service-java
+# im-service
 
