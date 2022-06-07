@@ -1,5 +1,5 @@
 # Drama-IM
-a rich and simple IM 
+A rich and simple IM 
 
 - frontend 
     - `vue : 2.0+`
