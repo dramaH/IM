@@ -1,2 +1,2 @@
-# ensemble-im
+# im-service-java
 
