@@ -1,3 +1,6 @@
+
+// drama-im 使用示例
+
 <template>
   <Drama-imui
     ref="IMUI"
