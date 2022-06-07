@@ -1,0 +1,37 @@
+#POST http://localhost:8081/im/contact/query
+POST http://127.0.0.1:8081/im/contact/query
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "appHead": {
+    "pgupOrPgdn":"1",
+    "totalNum":"-1",
+    "currentNum":"0",
+    "totalFlag":"E"
+  },
+  "body": {
+    "userId": "TANGY"
+  },
+  "sysHead": {
+    "seqNo": "22ADB2688892336361",
+    "apprFlag": "A",
+    "apprUserId": "",
+    "authFlag": "N",
+    "branchId": "99",
+    "moduleId": "IM",
+    "sceneId": "01",
+    "serverId": "127.0.0.1",
+    "sourceType": "MT",
+    "tranDate": "20210124",
+    "tranMode": "ONLINE",
+    "tranTimestamp": "131421700",
+    "tranType": "",
+    "userId": "ADMIN",
+    "userLang": "CHINESE",
+    "wsId": "05"
+  }
+}
+
+###

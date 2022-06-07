@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
+  <contextName>logback</contextName>
+
+  <!--脱敏配置-->
+  <conversionRule conversionWord="msg" converterClass="com.dcits.comet.log.SensitiveDataConverter"/>
+
+  <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+  <property name="log.path" value="../../logs/ensemble-im-service" />
+
+  <!--输出到控制台-->
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>DEBUG</level>
+    </filter>
+    <!--<withJansi>true</withJansi>-->
+    <encoder>
+      <!--<pattern>%d %p (%file:%line\)- %m%n</pattern>-->
+      <!--格式化输出：%d:表示日期    %thread:表示线程名     %-5level:级别从左显示5个字符宽度  %msg:日志消息    %n:是换行符-->
+      <pattern>%black(控制台-) %red(%d{yyyy-MM-dd HH:mm:ss}) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger) - %cyan(%msg%n)</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <!--输出到文件-->
+  <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!--<fileNamePattern>logback.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>-->
+      <fileNamePattern>${log.path}/%d{yyyyMMdd}/ensemble-im-online-service.%d{yyyyMMdd}.%i.log</fileNamePattern>
+      <maxHistory>14</maxHistory>
+      <totalSizeCap>10GB</totalSizeCap>
+      <maxFileSize>10MB</maxFileSize>
+    </rollingPolicy>
+    <encoder>
+      <!--格式化输出：%d:表示日期    %thread:表示线程名     %-5level:级别从左显示5个字符宽度  %msg:日志消息    %n:是换行符-->
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{uri}] [%X{channelSeqNo}] %logger{86}.%M:%L - %msg%n</pattern>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+
+  <root level="info">
+    <!--<appender-ref ref="console" />-->
+    <appender-ref ref="file" />
+  </root>
+
+  <logger name="springfox.documentation.spring" level="warn" />
+  <logger name="org.springframework" level="warn" />
+  <logger name="org.mybatis.spring" level="info" />
+  <logger name="org.apache.catalina" level="warn" />
+  <logger name="com.netflix" level="warn" />
+  <logger name="com.netflix.loadbalancer.BaseLoadBalancer" level="error"/>
+  <logger name="com.dcits.im" level="debug" />
+  <logger name="com.dcits.comet" level="warn"/>
+  <logger name="com.dcits.comet.flow" level="info"/>
+  <!--拆拼包日志-->
+  <logger name="com.farsunset.cim.sdk.server.coder" level="debug"/>
+
+  <!--流程输入输出日志-->
+  <logger name="com.dcits.comet.flow.DefaultFlowChain" level="info"/>
+  <logger name="com.dcits.comet.flow.timer.FlowTimerTask" level="info"/>
+
+  <!--关闭负载均衡内部误打印警告日志-->
+  <logger name="com.netflix.loadbalancer.BaseLoadBalancer" level="error"/>
+  <!--spring cloud注册日志，info:打印注册中心连接信息-->
+  <logger name="com.netflix.discovery.DiscoveryClient" level="error"/>
+  <logger name="org.apache.kafka" level="error"/>
+  <!--缓存访问日志-->
+  <logger name="com.dcits.orbit" level="error"/>
+
+</configuration>

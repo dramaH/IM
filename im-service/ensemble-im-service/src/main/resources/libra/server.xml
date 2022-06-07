@@ -1,0 +1,15 @@
+<!DOCTYPE libra:server SYSTEM "server.dtd">
+<libra:server xmlns:libra="http://www.dcits.com/libra/">
+    <system>
+      <property name="lowerCaseTableNames">1</property>
+      <property name="allowMultiNodeQuery">true</property>
+        <!--是否切换与切换时间-->
+      <property name="readOnlyDetect">false</property>
+      <property name="dataNodeHeartbeatPeriod">2000</property>
+    </system>
+    <firewall/>
+    <user name="root">
+        <property name="password">123456</property>
+        <property name="schemas">TestDb</property>
+    </user>
+</libra:server>

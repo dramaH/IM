@@ -1,0 +1,44 @@
+#POST http://localhost:8081/im/notice/send
+POST http://10.5.2.24:8081/im/notice/send
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "appHead": {
+    "pgupOrPgdn":"1",
+    "totalNum":"-1",
+    "currentNum":"0",
+    "totalFlag":"N"
+  },
+  "body": {
+    "noticeType": "0",
+    "toArray": [
+      {"acceptId": "CHENLF"}
+    ],
+    "title": "系统消息提醒",
+    "readType": "1",
+    "content": "这是一条系统消息测试3",
+    "format": "0"
+  },
+  "sysHead": {
+    "seqNo": "22ADB2688892336354",
+    "apprFlag": "A",
+    "apprUserId": "",
+    "authFlag": "N",
+    "branchId": "99",
+    "moduleId": "IM",
+    "sceneId": "01",
+    "serverId": "127.0.0.1",
+    "sourceType": "MT",
+    "tranDate": "20210124",
+    "tranMode": "ONLINE",
+    "tranTimestamp": "131421700",
+    "tranType": "",
+    "userId": "YUANJH",
+    "userLang": "CHINESE",
+    "wsId": "05"
+  }
+}
+
+###

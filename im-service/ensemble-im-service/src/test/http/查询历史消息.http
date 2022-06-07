@@ -1,0 +1,57 @@
+POST http://10.5.2.24:8081/im/msgHis/query
+#POST http://10.5.2.122:8081/im/msgHis/query
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+ "body": {
+  "sessionId": "CHENLF#_#XUZM",
+   "rows": 10
+ },
+ "signKey": "f206d304e1654fa155ab65a9643f8cd8",
+ "sysHead": {
+  "serviceCode": "",
+  "messageType": "",
+  "messageCode": "",
+  "tranMode": "ONLINE",
+  "sourceType": "MT",
+  "branchId": "99",
+  "userId": "",
+  "staffId": "CHENLF",
+  "userBigType": "01",
+  "userType": "02",
+  "channelNo": "",
+  "outletType": "",
+  "outletNo": "",
+  "brandBusiNo": [],
+  "tranDate": "",
+  "tranTimestamp": "",
+  "userLang": "CHINESE",
+  "seqNo": "202112277n2vg5BrAM153719",
+  "programId": "",
+  "sourceBranchNo": "",
+  "destBranchNo": "",
+  "filePath": "",
+  "macValue": "",
+  "systemId": "EOMPC",
+  "logId": "",
+  "busiSubSys": "01"
+ },
+ "appHead": {
+  "pgupOrPgdn": 1,
+  "totalNum": 10,
+  "currentNum": 0,
+  "totalFlag": "E"
+ },
+ "localHead": {
+  "ret": [],
+  "retCode": "",
+  "retMsg": ""
+ },
+ "frontHead": {
+  "urlPath": "/im/msgHis/query"
+ }
+}
+
+###

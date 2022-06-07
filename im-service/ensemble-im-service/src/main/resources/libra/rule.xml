@@ -1,0 +1,14 @@
+<!DOCTYPE libra:rule SYSTEM "rule.dtd">
+<libra:rule xmlns:libra="http://www.dcits.com/libra/">
+    <tableRule name="commonRule">
+        <rule>
+            <columns>CLIENT_NO</columns>
+            <algorithm>mod</algorithm>
+        </rule>
+    </tableRule>
+    <!-- 路由函数定义 -->
+    <function name="mod" class="com.actiontech.dble.route.function.PartitionByLong">
+        <property name="partitionCount">2</property>
+        <property name="partitionLength">1</property>
+    </function>
+</libra:rule>

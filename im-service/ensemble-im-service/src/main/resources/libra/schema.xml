@@ -1,0 +1,76 @@
+<!DOCTYPE libra:schema SYSTEM "schema.dtd">
+<libra:schema xmlns:libra="http://www.dcits.com/libra/">
+	<schema name="TestDb" checkSQLschema="false" dbType="mysql">
+		<!--global table-->
+		<!--<table name="GLOBAL_TABLE" dataNode="dn1"/>-->
+		<!--sharding table-->
+		<!--<table name="SHARDING_TABLE" dataNode="dn1,dn2" rule="commonRule"/>-->
+		<!--single table-->
+		<!--<table name="SINGLE_TABLE" dataNode="dn1"/>-->
+
+	</schema>
+
+	<dataNode name="dn1" dataHost="localhost1" database="dn1" dataCenter="dc01"/>
+	<dataNode name="dn2" dataHost="localhost2" database="dn2" dataCenter="dc02"/>
+
+	<dataHost balance="0" maxCon="200" minCon="10" name="localhost1" switchType="1" slaveThreshold="100">
+		<heartbeat>select 1</heartbeat>
+		<writeHost host="hostM1" url="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true" password="123456" user="root" dbDriver="druid" settings="druid"/>
+		<!--写库配置 ：平级配置。 第一个为主库，剩余为子
+			switchType = 1
+			host :当前目录唯一
+		-->
+		<!--<writeHost host="hostM2" url="jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true" password="123456" user="root" dbDriver="druid" settings="druid"/>-->
+	</dataHost>
+	<dataHost balance="0" maxCon="200" minCon="10" name="localhost2" switchType="1" slaveThreshold="100">
+		<heartbeat>select 1</heartbeat>
+		<writeHost host="hostM2" url="jdbc:mysql://127.0.0.1:3306/test2?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true" password="123456" user="root" dbDriver="druid" settings="druid"/>
+	</dataHost>
+
+	<sourceSettings name="druid">
+		<!--初始建立的物理连接个数-->
+		<!--<property name="druid.initialSize">10</property>-->
+		<!--最小连接池数量-->
+		<!--<property name="druid.minIdle">10</property>-->
+		<!--最大连接池数量-->
+		<!--<property name="druid.maxActive">10</property>-->
+		<!--连接驱动类型名，可不配置，根据url自动识别-->
+		<!--<property name="druid.driverClassName"></property>-->
+		<!--获取连接时最大等待时间，单位毫秒-->
+		<property name="druid.maxWait">3000</property>
+		<!--初始的连接提交类型是否为自动提交-->
+		<property name="druid.defaultAutoCommit">false</property>
+		<!--是否检查空闲连接标志，不影响性能，并且保证了连接安全性，空闲时间大于timeBetweenEvictionRunsMillis时执行validationQuery检查-->
+		<property name="druid.testWhileIdle">true</property>
+		<!--申请连接时，执行validationQuery，检查连接有效性，会影响性能-->
+		<property name="druid.testOnBorrow">false</property>
+		<!--归还连接时，执行validationQuery，检查连接有效性，会影响性能-->
+		<property name="druid.testOnReturn">false</property>
+		<!--检查连接是否有效的sql-->
+		<!--<property name="druid.validationQuery"></property>-->
+		<!--有两个含义：（1）Destory线程会检测连接的间隔时间；（2）空闲连接检查的判断依据-->
+		<property name="druid.timeBetweenEvictionRunsMillis">60000</property>
+		<!--初始物理连接后，初始化时添加到连接池前执行的sql-->
+		<!--<property name="druid.initConnectionSqls"></property>-->
+		<!--扩展插件，监控统计使用stat，日志使用log4j，防sql注入使用wall-->
+		<!--<property name="druid.filters">stat</property>-->
+		<!--是否缓存PreparedStatement，也就是PSCache对执行游标的数据库，性能提升巨大-->
+		<property name="druid.poolPreparedStatements">true</property>
+		<!--启用PSCache时，必须配置大于0，大于0时，自动触发修改poolPreparedStatements为true-->
+		<property name="druid.maxOpenPreparedStatements">100</property>
+		<!--<property name="druid.clearFiltersEnable"></property>-->
+		<!--<property name="druid.resetStatEnable"></property>-->
+		<!--<property name="druid.notFullTimeoutRetryCount"></property>-->
+		<!--<property name="druid.maxWaitThreadCount"></property>-->
+		<!--<property name="druid.failFast"></property>-->
+		<!--<property name="druid.phyTimeoutMillis"></property>-->
+		<!--<property name="druid.minEvictableIdleTimeMillis">1800000</property>-->
+		<!--<property name="druid.maxEvictableIdleTimeMillis"></property>-->
+		<!--<property name="druid.keepAlive"></property>-->
+		<!--<property name="druid.initVariants"></property>-->
+		<!--<property name="druid.initGlobalVariants"></property>-->
+		<!--<property name="druid.useUnfairLock"></property>-->
+		<!--<property name="druid.killWhenSocketReadTimeout"></property>-->
+		<property name="druid.maxPoolPreparedStatementPerConnectionSize">200</property>
+	</sourceSettings>
+</libra:schema>
