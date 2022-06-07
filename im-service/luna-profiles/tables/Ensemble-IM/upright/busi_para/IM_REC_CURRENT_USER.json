@@ -1,0 +1,126 @@
+{
+  "name" : "当前用户登录表",
+  "valid" : true,
+  "incomplete" : false,
+  "tableSystemId" : "d95014ab7ff241abbb16be4c939140c8",
+  "tableSpaceId" : "e356ac8260b2467e9e3cabb7769e3e55",
+  "code" : "IM_REC_CURRENT_USER",
+  "dbClassification" : "UPRIGHT",
+  "category" : "busi_para",
+  "tableFields" : [ {
+    "name" : "ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : true,
+    "nullable" : false
+  }, {
+    "name" : "USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "NODE_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "DEVICE_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "DEVICE_NAME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "HOST",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "CHANNEL",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "APP_VERSION",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "OS_VERSION",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "LANGUAGE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "LONGITUDE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "LATITUDE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "LOCATION",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "IS_ONLINE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "BIND_TIME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "CREATE_TIME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "TIMESTAMP",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "STATE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  } ],
+  "tableIndices" : [ {
+    "name" : "IM_REC_CURRENT_USER_PK",
+    "valid" : true,
+    "incomplete" : false,
+    "fieldName" : "ID",
+    "innerTableIndex" : "UNIQUE"
+  } ]
+}

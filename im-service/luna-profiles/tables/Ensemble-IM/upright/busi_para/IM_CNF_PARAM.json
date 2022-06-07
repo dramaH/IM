@@ -1,0 +1,54 @@
+{
+  "name" : "通讯中心参数表",
+  "valid" : true,
+  "incomplete" : false,
+  "tableSystemId" : "d95014ab7ff241abbb16be4c939140c8",
+  "tableSpaceId" : "e356ac8260b2467e9e3cabb7769e3e55",
+  "code" : "IM_CNF_PARAM",
+  "dbClassification" : "UPRIGHT",
+  "category" : "busi_para",
+  "tableFields" : [ {
+    "name" : "ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : true,
+    "nullable" : false
+  }, {
+    "name" : "PARAM_KEY",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "PARAM_VALUE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "CREATE_TIME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "TIMESTAMP",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "STATE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  } ],
+  "tableIndices" : [ {
+    "name" : "IM_CNF_PARAM_PK",
+    "valid" : true,
+    "incomplete" : false,
+    "fieldName" : "ID",
+    "innerTableIndex" : "UNIQUE"
+  } ]
+}

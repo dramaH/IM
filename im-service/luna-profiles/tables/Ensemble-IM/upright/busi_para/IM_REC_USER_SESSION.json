@@ -1,0 +1,102 @@
+{
+  "name" : "用户聊天会话表",
+  "valid" : true,
+  "incomplete" : false,
+  "tableSystemId" : "d95014ab7ff241abbb16be4c939140c8",
+  "tableSpaceId" : "e356ac8260b2467e9e3cabb7769e3e55",
+  "code" : "IM_REC_USER_SESSION",
+  "dbClassification" : "UPRIGHT",
+  "category" : "busi_para",
+  "tableFields" : [ {
+    "name" : "ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : true,
+    "nullable" : false
+  }, {
+    "name" : "SESSION_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "SESSION_NAME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "OPP_USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "IS_TOP",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "IS_ONLINE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "IS_OPEN",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "MSG_TYPE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "MSG_NUM",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "NO_READ_NUM",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "CREATE_TIME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "TIMESTAMP",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "STATE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  } ],
+  "tableIndices" : [ {
+    "name" : "IM_REC_USER_SESSION_PK",
+    "valid" : true,
+    "incomplete" : false,
+    "fieldName" : "ID",
+    "innerTableIndex" : "UNIQUE"
+  } ]
+}

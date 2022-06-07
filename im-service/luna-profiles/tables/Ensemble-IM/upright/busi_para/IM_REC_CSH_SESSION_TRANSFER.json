@@ -1,0 +1,84 @@
+{
+  "name" : "客服会话转接表",
+  "valid" : true,
+  "incomplete" : false,
+  "tableSystemId" : "d95014ab7ff241abbb16be4c939140c8",
+  "tableSpaceId" : "e356ac8260b2467e9e3cabb7769e3e55",
+  "code" : "IM_REC_CSH_SESSION_TRANSFER",
+  "dbClassification" : "UPRIGHT",
+  "category" : "busi_para",
+  "tableFields" : [ {
+    "name" : "ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : true,
+    "nullable" : false
+  }, {
+    "name" : "CUST_USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "SESSION_ID_OLD",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "FROM_CSH_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "FROM_USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "SESSION_ID_NEW",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "TO_CSH_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "TO_USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "CREATE_TIME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "TIMESTAMP",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "STATE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  } ],
+  "tableIndices" : [ {
+    "name" : "IM_REC_CSH_SESSION_TRANSFER_PK",
+    "valid" : true,
+    "incomplete" : false,
+    "fieldName" : "ID",
+    "innerTableIndex" : "UNIQUE"
+  } ]
+}

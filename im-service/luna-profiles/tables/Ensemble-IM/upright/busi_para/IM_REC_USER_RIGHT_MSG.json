@@ -1,0 +1,84 @@
+{
+  "name" : "用户聊天右消息表",
+  "valid" : true,
+  "incomplete" : false,
+  "tableSystemId" : "d95014ab7ff241abbb16be4c939140c8",
+  "tableSpaceId" : "e356ac8260b2467e9e3cabb7769e3e55",
+  "code" : "IM_REC_USER_RIGHT_MSG",
+  "dbClassification" : "UPRIGHT",
+  "category" : "busi_para",
+  "tableFields" : [ {
+    "name" : "ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : true,
+    "nullable" : false
+  }, {
+    "name" : "SESSION_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "CHANNEL",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "FROM_USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "TO_USER_ID",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "CONTENT",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : true
+  }, {
+    "name" : "FORMAT",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "CREATE_TIME",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "TIMESTAMP",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  }, {
+    "name" : "STATE",
+    "valid" : true,
+    "incomplete" : false,
+    "primary" : false,
+    "nullable" : false
+  } ],
+  "tableIndices" : [ {
+    "name" : "IM_REC_USER_RIGHT_MSG_PK",
+    "valid" : true,
+    "incomplete" : false,
+    "fieldName" : "ID",
+    "innerTableIndex" : "UNIQUE"
+  } ]
+}
