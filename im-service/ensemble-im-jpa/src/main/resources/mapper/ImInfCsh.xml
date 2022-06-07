@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.ImInfCsh">
+	<resultMap id="BaseResultMap" type="com.dcits.im.jpa.entity.ImInfCsh" >
+				<result column="ID" property="id"  jdbcType="VARCHAR"/>
+				<result column="CSH_ID" property="cshId"  jdbcType="VARCHAR"/>
+				<result column="CSH_NAME" property="cshName"  jdbcType="VARCHAR"/>
+				<result column="USER_ID" property="userId"  jdbcType="VARCHAR"/>
+				<result column="USER_NAME" property="userName"  jdbcType="VARCHAR"/>
+				<result column="CREATE_TIME" property="createTime"  jdbcType="DECIMAL"/>
+				<result column="TIMESTAMP" property="timestamp"  jdbcType="DECIMAL"/>
+				<result column="STATE" property="state"  jdbcType="INTEGER"/>
+	</resultMap>
+
+	<sql id="Table_Name">
+		IM_INF_CSH
+	</sql>
+
+	<sql id="Base_Column">
+				ID,
+				CSH_ID,
+				CSH_NAME,
+				USER_ID,
+				USER_NAME,
+				CREATE_TIME,
+				TIMESTAMP,
+				STATE
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+			<if test="id != null and  id != '' ">
+		       ID = #{id}  AND
+			</if>
+			<if test="cshId != null and  cshId != '' ">
+		       CSH_ID = #{cshId}  AND
+			</if>
+			<if test="cshName != null and  cshName != '' ">
+		       CSH_NAME = #{cshName}  AND
+			</if>
+			<if test="userId != null and  userId != '' ">
+		       USER_ID = #{userId}  AND
+			</if>
+			<if test="userName != null and  userName != '' ">
+		       USER_NAME = #{userName}  AND
+			</if>
+			<if test="timestamp != null ">
+		       TIMESTAMP = #{timestamp}  AND
+			</if>
+			<if test="state != null ">
+		       STATE = #{state}  AND
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="comet_step_column">
+		<if test="cometSqlType == 'segment'"> ${cometKeyField} as KEY_FIELD </if>
+		<if test="cometSqlType == 'page'">  * </if>
+	</sql>
+
+	<sql id="comet_step_where">
+		<if test="cometStart != null and cometStart.length() > 0 and cometEnd != null and cometEnd.length() > 0" > and ${cometKeyField} between #{cometStart} and #{cometEnd} </if>
+	</sql>
+
+	<sql id="comet_row_num_step_column">
+		<if test="cometSqlType == 'total'"> count(*) </if>
+		<if test="cometSqlType == 'offset'">  * </if>
+	</sql>
+
+	<sql id="Base_Select">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+		        ID,
+			</if>
+			<if test="cshId != null and  cshId != '' ">
+		        CSH_ID,
+			</if>
+			<if test="cshName != null and  cshName != '' ">
+		        CSH_NAME,
+			</if>
+			<if test="userId != null and  userId != '' ">
+		        USER_ID,
+			</if>
+			<if test="userName != null and  userName != '' ">
+		        USER_NAME,
+			</if>
+			<if test="createTime != null ">
+				CREATE_TIME,
+			</if>
+			<if test="timestamp != null ">
+		        TIMESTAMP,
+			</if>
+			<if test="state != null ">
+		        STATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+				#{id},
+			</if>
+			<if test="cshId != null and  cshId != '' ">
+				#{cshId},
+			</if>
+			<if test="cshName != null and  cshName != '' ">
+				#{cshName},
+			</if>
+			<if test="userId != null and  userId != '' ">
+				#{userId},
+			</if>
+			<if test="userName != null and  userName != '' ">
+				#{userName},
+			</if>
+			<if test="createTime != null ">
+				#{createTime},
+			</if>
+			<if test="timestamp != null ">
+				#{timestamp},
+			</if>
+			<if test="state != null ">
+				#{state},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update"  >
+		UPDATE <include refid="Table_Name" />
+		<set>
+			    <if test="cshId != null and  cshId != '' ">
+					    CSH_ID = #{cshId},
+				</if>
+			    <if test="cshName != null and  cshName != '' ">
+					    CSH_NAME = #{cshName},
+				</if>
+			    <if test="userId != null and  userId != '' ">
+					    USER_ID = #{userId},
+				</if>
+			    <if test="userName != null and  userName != '' ">
+					    USER_NAME = #{userName},
+				</if>
+				<if test="timestamp != null ">
+					    TIMESTAMP = #{timestamp},
+				</if>
+				<if test="state != null ">
+					    STATE = #{state},
+				</if>
+		</set>
+		<where>
+			<trim suffixOverrides="AND">
+				 <if test="id != null and  id != '' ">
+					 ID = #{id}  AND
+				 </if>
+			</trim>
+		</where>
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			  <if test="s.id != null and s.id != '' ">
+			    ID = #{s.id},
+			 </if>
+			  <if test="s.cshId != null and s.cshId != '' ">
+			    CSH_ID = #{s.cshId},
+			 </if>
+			  <if test="s.cshName != null and s.cshName != '' ">
+			    CSH_NAME = #{s.cshName},
+			 </if>
+			  <if test="s.userId != null and s.userId != '' ">
+			    USER_ID = #{s.userId},
+			 </if>
+			  <if test="s.userName != null and s.userName != '' ">
+			    USER_NAME = #{s.userName},
+			 </if>
+			  <if test="s.timestamp != null ">
+			    TIMESTAMP = #{s.timestamp},
+			 </if>
+			  <if test="s.state != null ">
+			    STATE = #{s.state},
+			 </if>
+		</set>
+		<where>
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+				    <if test="w.id != null and w.id != '' ">
+					ID = #{w.id}
+					AND
+				</if>
+				    <if test="w.cshId != null and w.cshId != '' ">
+					CSH_ID = #{w.cshId}
+					AND
+				</if>
+				    <if test="w.cshName != null and w.cshName != '' ">
+					CSH_NAME = #{w.cshName}
+					AND
+				</if>
+				    <if test="w.userId != null and w.userId != '' ">
+					USER_ID = #{w.userId}
+					AND
+				</if>
+				    <if test="w.userName != null and w.userName != '' ">
+					USER_NAME = #{w.userName}
+					AND
+				</if>
+					<if test="w.timestamp != null ">
+					TIMESTAMP = #{w.timestamp}
+					AND
+				</if>
+					<if test="w.state != null ">
+					STATE = #{w.state}
+					AND
+				</if>
+			</trim>
+		</where>
+	</update>
+	<delete id="delete" >
+		DELETE FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		<include refid="Base_Select" />
+		for update
+	</select>
+
+
+	<!--根据主键查询-->
+	<select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+		      <if test="id != null and  id != '' ">
+				 ID = #{id}  AND
+			  </if>
+			</trim>
+		</where>
+	</select>
+
+    <!--根据主键删除-->
+	<delete id="deleteByPrimaryKey">
+		DELETE FROM <include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+	        	<if test="id != null and  id != '' ">
+				  ID = #{id}  AND
+				</if>
+			</trim>
+		</where>
+	</delete>
+</mapper>

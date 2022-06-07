@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.ImRecSysMsg">
+	<sql id="Times_Where">
+		<trim suffixOverrides="AND">
+			<if test="id != null and  id != '' ">
+				ID = #{id}  AND
+			</if>
+			<if test="sessionId != null and  sessionId != '' ">
+				SESSION_ID = #{sessionId}  AND
+			</if>
+			<if test="systemIds != null and  systemIds != '' ">
+				SYSTEM_IDS = #{systemIds}  AND
+			</if>
+			<if test="toUserId != null and  toUserId != '' ">
+				TO_USER_ID = #{toUserId}  AND
+			</if>
+			<if test="readType != null ">
+				READ_TYPE = #{readType}  AND
+			</if>
+			<if test="title != null and  title != '' ">
+				TITLE = #{title}  AND
+			</if>
+			<if test="content != null and  content != '' ">
+				CONTENT = #{content}  AND
+			</if>
+			<if test="format != null ">
+				FORMAT = #{format}  AND
+			</if>
+			<if test="isRead != null ">
+				IS_READ = #{isRead}  AND
+			</if>
+			<if test="createTime != null ">
+				CREATE_TIME &lt;= #{createTime}  AND
+			</if>
+			<if test="timestamp != null ">
+				TIMESTAMP = #{timestamp}  AND
+			</if>
+			<if test="state != null ">
+				STATE = #{state}  AND
+			</if>
+		</trim>
+	</sql>
+	<select id="selectListForRead" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Times_Where" />
+		</where>
+	</select>
+
+
+	<sql id="MessageInfoColumn">
+        ID,
+		SESSION_ID,
+		CHANNEL,
+		FROM_USER_ID,
+		USER_ID,
+		ACTION,
+		DIRECTION,
+		TITLE,
+		CONTENT,
+		FORMAT,
+		IS_READ,
+		CREATE_TIME
+    </sql>
+
+	<resultMap type="com.dcits.im.jpa.model.MessageInfo" id="MessageInfo">
+		<id property="id" column="ID"/>
+		<id property="sessionId" column="SESSION_ID"/>
+		<id property="channel" column="CHANNEL"/>
+		<id property="fromUserId" column="FROM_USER_ID"/>
+		<id property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="direction" column="DIRECTION"/>
+		<result property="action" column="ACTION"/>
+		<result property="isRead" column="IS_READ"/>
+		<result property="title" column="TITLE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="readType" column="READ_TYPE"/>
+		<result property="format" column="FORMAT"/>
+		<result property="msgDate" column="MSG_DATE"/>
+		<result property="createTime" column="CREATE_TIME"/>
+	</resultMap>
+	<select id="selectMessageList" resultMap="MessageInfo">
+		select * from(
+		select
+		<include refid="MessageInfoColumn" />
+		from(
+		select id,session_id,''channel,''from_user_id,to_user_id user_id, 1 action, 0 direction,title,content,read_type,format,is_read,create_time from im_rec_sys_msg
+		)
+		<where>
+			<trim suffixOverrides="AND">
+				<if test="sessionId != null and  sessionId != '' ">
+					session_id = #{sessionId}  AND
+				</if>
+				<if test="userId != null and  userId != '' ">
+					user_id = #{userId}  AND
+				</if>
+				<if test="id != null and  id != '' ">
+					ID &lt; #{id}  AND
+				</if>
+			</trim>
+		</where>
+		order by id desc
+		)
+		<where>
+			<if test="rows != null ">
+				rownum &lt;= #{rows}
+			</if>
+			<if test="rows == null ">
+				rownum &lt;= 10
+			</if>
+		</where>
+	</select>
+</mapper>

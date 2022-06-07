@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.UmSysUserRole">
+	<resultMap id="BaseResultMap" type="com.dcits.im.jpa.entity.UmSysUserRole" >
+				<result column="ID" property="id"  jdbcType="VARCHAR"/>
+				<result column="USER_ID" property="userId"  jdbcType="VARCHAR"/>
+				<result column="ROLE_ID" property="roleId"  jdbcType="VARCHAR"/>
+				<result column="ROLE_NAME" property="roleName"  jdbcType="VARCHAR"/>
+				<result column="LAST_UPDATE_TIME" property="lastUpdateTime"  jdbcType="DATE"/>
+				<result column="LAST_UPDATE_USER" property="lastUpdateUser"  jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="Table_Name">
+		UM_SYS_USER_ROLE
+	</sql>
+
+	<sql id="Base_Column">
+				ID,
+				USER_ID,
+				ROLE_ID,
+				ROLE_NAME,
+				LAST_UPDATE_TIME,
+				LAST_UPDATE_USER
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+			<if test="id != null and  id != '' ">
+		       ID = #{id}  AND
+			</if>
+			<if test="userId != null and  userId != '' ">
+		       USER_ID = #{userId}  AND
+			</if>
+			<if test="roleId != null and  roleId != '' ">
+		       ROLE_ID = #{roleId}  AND
+			</if>
+			<if test="roleName != null and  roleName != '' ">
+		       ROLE_NAME = #{roleName}  AND
+			</if>
+			<if test="lastUpdateTime != null ">
+		       LAST_UPDATE_TIME = #{lastUpdateTime}  AND
+			</if>
+			<if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+		       LAST_UPDATE_USER = #{lastUpdateUser}  AND
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="comet_step_column">
+		<if test="cometSqlType == 'segment'"> ${cometKeyField} as KEY_FIELD </if>
+		<if test="cometSqlType == 'page'">  * </if>
+	</sql>
+
+	<sql id="comet_step_where">
+		<if test="cometStart != null and cometStart.length() > 0 and cometEnd != null and cometEnd.length() > 0" > and ${cometKeyField} between #{cometStart} and #{cometEnd} </if>
+	</sql>
+
+	<sql id="comet_row_num_step_column">
+		<if test="cometSqlType == 'total'"> count(*) </if>
+		<if test="cometSqlType == 'offset'">  * </if>
+	</sql>
+
+	<sql id="Base_Select">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+		        ID,
+			</if>
+			<if test="userId != null and  userId != '' ">
+		        USER_ID,
+			</if>
+			<if test="roleId != null and  roleId != '' ">
+		        ROLE_ID,
+			</if>
+			<if test="roleName != null and  roleName != '' ">
+		        ROLE_NAME,
+			</if>
+			<if test="lastUpdateTime != null ">
+		        LAST_UPDATE_TIME,
+			</if>
+			<if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+		        LAST_UPDATE_USER,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+				#{id},
+			</if>
+			<if test="userId != null and  userId != '' ">
+				#{userId},
+			</if>
+			<if test="roleId != null and  roleId != '' ">
+				#{roleId},
+			</if>
+			<if test="roleName != null and  roleName != '' ">
+				#{roleName},
+			</if>
+			<if test="lastUpdateTime != null ">
+				#{lastUpdateTime},
+			</if>
+			<if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+				#{lastUpdateUser},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update"  >
+		UPDATE <include refid="Table_Name" />
+		<set>
+			    <if test="id != null and  id != '' ">
+					    ID = #{id},
+				</if>
+			    <if test="userId != null and  userId != '' ">
+					    USER_ID = #{userId},
+				</if>
+			    <if test="roleId != null and  roleId != '' ">
+					    ROLE_ID = #{roleId},
+				</if>
+			    <if test="roleName != null and  roleName != '' ">
+					    ROLE_NAME = #{roleName},
+				</if>
+				<if test="lastUpdateTime != null ">
+					    LAST_UPDATE_TIME = #{lastUpdateTime},
+				</if>
+			    <if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+					    LAST_UPDATE_USER = #{lastUpdateUser},
+				</if>
+		</set>
+		<where>
+			<trim suffixOverrides="AND">
+			</trim>
+		</where>
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			  <if test="s.id != null and s.id != '' ">
+			    ID = #{s.id},
+			 </if>
+			  <if test="s.userId != null and s.userId != '' ">
+			    USER_ID = #{s.userId},
+			 </if>
+			  <if test="s.roleId != null and s.roleId != '' ">
+			    ROLE_ID = #{s.roleId},
+			 </if>
+			  <if test="s.roleName != null and s.roleName != '' ">
+			    ROLE_NAME = #{s.roleName},
+			 </if>
+			  <if test="s.lastUpdateTime != null ">
+			    LAST_UPDATE_TIME = #{s.lastUpdateTime},
+			 </if>
+			  <if test="s.lastUpdateUser != null and s.lastUpdateUser != '' ">
+			    LAST_UPDATE_USER = #{s.lastUpdateUser},
+			 </if>
+		</set>
+		<where>
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+				    <if test="w.id != null and w.id != '' ">
+					ID = #{w.id}
+					AND
+				</if>
+				    <if test="w.userId != null and w.userId != '' ">
+					USER_ID = #{w.userId}
+					AND
+				</if>
+				    <if test="w.roleId != null and w.roleId != '' ">
+					ROLE_ID = #{w.roleId}
+					AND
+				</if>
+				    <if test="w.roleName != null and w.roleName != '' ">
+					ROLE_NAME = #{w.roleName}
+					AND
+				</if>
+					<if test="w.lastUpdateTime != null ">
+					LAST_UPDATE_TIME = #{w.lastUpdateTime}
+					AND
+				</if>
+				    <if test="w.lastUpdateUser != null and w.lastUpdateUser != '' ">
+					LAST_UPDATE_USER = #{w.lastUpdateUser}
+					AND
+				</if>
+			</trim>
+		</where>
+	</update>
+	<delete id="delete" >
+		DELETE FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		<include refid="Base_Select" />
+		for update
+	</select>
+
+
+
+</mapper>

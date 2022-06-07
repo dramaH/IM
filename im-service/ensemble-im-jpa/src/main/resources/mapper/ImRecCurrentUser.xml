@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.ImRecCurrentUser">
+	<resultMap id="BaseResultMap" type="com.dcits.im.jpa.entity.ImRecCurrentUser" >
+				<result column="ID" property="id"  jdbcType="VARCHAR"/>
+				<result column="USER_ID" property="userId"  jdbcType="VARCHAR"/>
+				<result column="NODE_ID" property="nodeId"  jdbcType="VARCHAR"/>
+				<result column="DEVICE_ID" property="deviceId"  jdbcType="VARCHAR"/>
+				<result column="DEVICE_NAME" property="deviceName"  jdbcType="VARCHAR"/>
+				<result column="HOST" property="host"  jdbcType="VARCHAR"/>
+				<result column="CHANNEL" property="channel"  jdbcType="VARCHAR"/>
+				<result column="APP_VERSION" property="appVersion"  jdbcType="VARCHAR"/>
+				<result column="OS_VERSION" property="osVersion"  jdbcType="VARCHAR"/>
+				<result column="LANGUAGE" property="language"  jdbcType="VARCHAR"/>
+				<result column="LONGITUDE" property="longitude"  jdbcType="VARCHAR"/>
+				<result column="LATITUDE" property="latitude"  jdbcType="VARCHAR"/>
+				<result column="LOCATION" property="location"  jdbcType="VARCHAR"/>
+				<result column="IS_ONLINE" property="isOnline"  jdbcType="INTEGER"/>
+				<result column="BIND_TIME" property="bindTime"  jdbcType="VARCHAR"/>
+				<result column="CREATE_TIME" property="createTime"  jdbcType="DECIMAL"/>
+				<result column="TIMESTAMP" property="timestamp"  jdbcType="DECIMAL"/>
+				<result column="STATE" property="state"  jdbcType="INTEGER"/>
+	</resultMap>
+
+	<sql id="Table_Name">
+		IM_REC_CURRENT_USER
+	</sql>
+
+	<sql id="Base_Column">
+				ID,
+				USER_ID,
+				NODE_ID,
+				DEVICE_ID,
+				DEVICE_NAME,
+				HOST,
+				CHANNEL,
+				APP_VERSION,
+				OS_VERSION,
+				LANGUAGE,
+				LONGITUDE,
+				LATITUDE,
+				LOCATION,
+				IS_ONLINE,
+				BIND_TIME,
+				CREATE_TIME,
+				TIMESTAMP,
+				STATE
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+			<if test="id != null and  id != '' ">
+		       ID = #{id}  AND
+			</if>
+			<if test="userId != null and  userId != '' ">
+		       USER_ID = #{userId}  AND
+			</if>
+			<if test="nodeId != null and  nodeId != '' ">
+		       NODE_ID = #{nodeId}  AND
+			</if>
+			<if test="deviceId != null and  deviceId != '' ">
+		       DEVICE_ID = #{deviceId}  AND
+			</if>
+			<if test="deviceName != null and  deviceName != '' ">
+		       DEVICE_NAME = #{deviceName}  AND
+			</if>
+			<if test="host != null and  host != '' ">
+		       HOST = #{host}  AND
+			</if>
+			<if test="channel != null and  channel != '' ">
+		       CHANNEL = #{channel}  AND
+			</if>
+			<if test="appVersion != null and  appVersion != '' ">
+		       APP_VERSION = #{appVersion}  AND
+			</if>
+			<if test="osVersion != null and  osVersion != '' ">
+		       OS_VERSION = #{osVersion}  AND
+			</if>
+			<if test="language != null and  language != '' ">
+		       LANGUAGE = #{language}  AND
+			</if>
+			<if test="longitude != null and  longitude != '' ">
+		       LONGITUDE = #{longitude}  AND
+			</if>
+			<if test="latitude != null and  latitude != '' ">
+		       LATITUDE = #{latitude}  AND
+			</if>
+			<if test="location != null and  location != '' ">
+		       LOCATION = #{location}  AND
+			</if>
+			<if test="bindTime != null and  bindTime != '' ">
+		       BIND_TIME = #{bindTime}  AND
+			</if>
+			<if test="timestamp != null ">
+		       TIMESTAMP = #{timestamp}  AND
+			</if>
+			<if test="isOnline != null ">
+		       IS_ONLINE = #{isOnline}  AND
+			</if>
+			<if test="state != null ">
+		       STATE = #{state}  AND
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="comet_step_column">
+		<if test="cometSqlType == 'segment'"> ${cometKeyField} as KEY_FIELD </if>
+		<if test="cometSqlType == 'page'">  * </if>
+	</sql>
+
+	<sql id="comet_step_where">
+		<if test="cometStart != null and cometStart.length() > 0 and cometEnd != null and cometEnd.length() > 0" > and ${cometKeyField} between #{cometStart} and #{cometEnd} </if>
+	</sql>
+
+	<sql id="comet_row_num_step_column">
+		<if test="cometSqlType == 'total'"> count(*) </if>
+		<if test="cometSqlType == 'offset'">  * </if>
+	</sql>
+
+	<sql id="Base_Select">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+		        ID,
+			</if>
+			<if test="userId != null and  userId != '' ">
+		        USER_ID,
+			</if>
+			<if test="nodeId != null and  nodeId != '' ">
+		        NODE_ID,
+			</if>
+			<if test="deviceId != null and  deviceId != '' ">
+		        DEVICE_ID,
+			</if>
+			<if test="deviceName != null and  deviceName != '' ">
+		        DEVICE_NAME,
+			</if>
+			<if test="host != null and  host != '' ">
+		        HOST,
+			</if>
+			<if test="channel != null and  channel != '' ">
+		        CHANNEL,
+			</if>
+			<if test="appVersion != null and  appVersion != '' ">
+		        APP_VERSION,
+			</if>
+			<if test="osVersion != null and  osVersion != '' ">
+		        OS_VERSION,
+			</if>
+			<if test="language != null and  language != '' ">
+		        LANGUAGE,
+			</if>
+			<if test="longitude != null and  longitude != '' ">
+		        LONGITUDE,
+			</if>
+			<if test="latitude != null and  latitude != '' ">
+		        LATITUDE,
+			</if>
+			<if test="location != null and  location != '' ">
+		        LOCATION,
+			</if>
+			<if test="bindTime != null and  bindTime != '' ">
+		        BIND_TIME,
+			</if>
+			<if test="createTime != null ">
+				CREATE_TIME,
+			</if>
+			<if test="createTime != null ">
+		        TIMESTAMP,
+			</if>
+			<if test="isOnline != null ">
+		        IS_ONLINE,
+			</if>
+			<if test="state != null ">
+		        STATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+				#{id},
+			</if>
+			<if test="userId != null and  userId != '' ">
+				#{userId},
+			</if>
+			<if test="nodeId != null and  nodeId != '' ">
+				#{nodeId},
+			</if>
+			<if test="deviceId != null and  deviceId != '' ">
+				#{deviceId},
+			</if>
+			<if test="deviceName != null and  deviceName != '' ">
+				#{deviceName},
+			</if>
+			<if test="host != null and  host != '' ">
+				#{host},
+			</if>
+			<if test="channel != null and  channel != '' ">
+				#{channel},
+			</if>
+			<if test="appVersion != null and  appVersion != '' ">
+				#{appVersion},
+			</if>
+			<if test="osVersion != null and  osVersion != '' ">
+				#{osVersion},
+			</if>
+			<if test="language != null and  language != '' ">
+				#{language},
+			</if>
+			<if test="longitude != null and  longitude != '' ">
+				#{longitude},
+			</if>
+			<if test="latitude != null and  latitude != '' ">
+				#{latitude},
+			</if>
+			<if test="location != null and  location != '' ">
+				#{location},
+			</if>
+			<if test="bindTime != null and  bindTime != '' ">
+				#{bindTime},
+			</if>
+            <if test="createTime != null ">
+                #{createTime},
+            </if>
+			<if test="timestamp != null ">
+				#{timestamp},
+			</if>
+			<if test="isOnline != null ">
+				#{isOnline},
+			</if>
+			<if test="state != null ">
+				#{state},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update"  >
+		UPDATE <include refid="Table_Name" />
+		<set>
+			    <if test="userId != null and  userId != '' ">
+					    USER_ID = #{userId},
+				</if>
+			    <if test="nodeId != null and  nodeId != '' ">
+					    NODE_ID = #{nodeId},
+				</if>
+			    <if test="deviceId != null and  deviceId != '' ">
+					    DEVICE_ID = #{deviceId},
+				</if>
+			    <if test="deviceName != null and  deviceName != '' ">
+					    DEVICE_NAME = #{deviceName},
+				</if>
+			    <if test="host != null and  host != '' ">
+					    HOST = #{host},
+				</if>
+			    <if test="channel != null and  channel != '' ">
+					    CHANNEL = #{channel},
+				</if>
+			    <if test="appVersion != null and  appVersion != '' ">
+					    APP_VERSION = #{appVersion},
+				</if>
+			    <if test="osVersion != null and  osVersion != '' ">
+					    OS_VERSION = #{osVersion},
+				</if>
+			    <if test="language != null and  language != '' ">
+					    LANGUAGE = #{language},
+				</if>
+			    <if test="longitude != null and  longitude != '' ">
+					    LONGITUDE = #{longitude},
+				</if>
+			    <if test="latitude != null and  latitude != '' ">
+					    LATITUDE = #{latitude},
+				</if>
+			    <if test="location != null and  location != '' ">
+					    LOCATION = #{location},
+				</if>
+			    <if test="bindTime != null and  bindTime != '' ">
+					    BIND_TIME = #{bindTime},
+				</if>
+				<if test="timestamp != null ">
+					    TIMESTAMP = #{timestamp},
+				</if>
+				<if test="isOnline != null ">
+					    IS_ONLINE = #{isOnline},
+				</if>
+				<if test="state != null ">
+					    STATE = #{state},
+				</if>
+		</set>
+		<where>
+			<trim suffixOverrides="AND">
+				 <if test="id != null and  id != '' ">
+					 ID = #{id}  AND
+				 </if>
+			</trim>
+		</where>
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			  <if test="s.id != null and s.id != '' ">
+			    ID = #{s.id},
+			 </if>
+			  <if test="s.userId != null and s.userId != '' ">
+			    USER_ID = #{s.userId},
+			 </if>
+			  <if test="s.nodeId != null and s.nodeId != '' ">
+			    NODE_ID = #{s.nodeId},
+			 </if>
+			  <if test="s.deviceId != null and s.deviceId != '' ">
+			    DEVICE_ID = #{s.deviceId},
+			 </if>
+			  <if test="s.deviceName != null and s.deviceName != '' ">
+			    DEVICE_NAME = #{s.deviceName},
+			 </if>
+			  <if test="s.host != null and s.host != '' ">
+			    HOST = #{s.host},
+			 </if>
+			  <if test="s.channel != null and s.channel != '' ">
+			    CHANNEL = #{s.channel},
+			 </if>
+			  <if test="s.appVersion != null and s.appVersion != '' ">
+			    APP_VERSION = #{s.appVersion},
+			 </if>
+			  <if test="s.osVersion != null and s.osVersion != '' ">
+			    OS_VERSION = #{s.osVersion},
+			 </if>
+			  <if test="s.language != null and s.language != '' ">
+			    LANGUAGE = #{s.language},
+			 </if>
+			  <if test="s.longitude != null and s.longitude != '' ">
+			    LONGITUDE = #{s.longitude},
+			 </if>
+			  <if test="s.latitude != null and s.latitude != '' ">
+			    LATITUDE = #{s.latitude},
+			 </if>
+			  <if test="s.location != null and s.location != '' ">
+			    LOCATION = #{s.location},
+			 </if>
+			  <if test="s.bindTime != null and s.bindTime != '' ">
+			    BIND_TIME = #{s.bindTime},
+			 </if>
+			  <if test="s.timestamp != null ">
+			    TIMESTAMP = #{s.timestamp},
+			 </if>
+			  <if test="s.isOnline != null ">
+			    IS_ONLINE = #{s.isOnline},
+			 </if>
+			  <if test="s.state != null ">
+			    STATE = #{s.state},
+			 </if>
+		</set>
+		<where>
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+				    <if test="w.id != null and w.id != '' ">
+					ID = #{w.id}
+					AND
+				</if>
+				    <if test="w.userId != null and w.userId != '' ">
+					USER_ID = #{w.userId}
+					AND
+				</if>
+				    <if test="w.nodeId != null and w.nodeId != '' ">
+					NODE_ID = #{w.nodeId}
+					AND
+				</if>
+				    <if test="w.deviceId != null and w.deviceId != '' ">
+					DEVICE_ID = #{w.deviceId}
+					AND
+				</if>
+				    <if test="w.deviceName != null and w.deviceName != '' ">
+					DEVICE_NAME = #{w.deviceName}
+					AND
+				</if>
+				    <if test="w.host != null and w.host != '' ">
+					HOST = #{w.host}
+					AND
+				</if>
+				    <if test="w.channel != null and w.channel != '' ">
+					CHANNEL = #{w.channel}
+					AND
+				</if>
+				    <if test="w.appVersion != null and w.appVersion != '' ">
+					APP_VERSION = #{w.appVersion}
+					AND
+				</if>
+				    <if test="w.osVersion != null and w.osVersion != '' ">
+					OS_VERSION = #{w.osVersion}
+					AND
+				</if>
+				    <if test="w.language != null and w.language != '' ">
+					LANGUAGE = #{w.language}
+					AND
+				</if>
+				    <if test="w.longitude != null and w.longitude != '' ">
+					LONGITUDE = #{w.longitude}
+					AND
+				</if>
+				    <if test="w.latitude != null and w.latitude != '' ">
+					LATITUDE = #{w.latitude}
+					AND
+				</if>
+				    <if test="w.location != null and w.location != '' ">
+					LOCATION = #{w.location}
+					AND
+				</if>
+				    <if test="w.bindTime != null and w.bindTime != '' ">
+					BIND_TIME = #{w.bindTime}
+					AND
+				</if>
+					<if test="w.timestamp != null ">
+					TIMESTAMP = #{w.timestamp}
+					AND
+				</if>
+					<if test="w.isOnline != null ">
+					IS_ONLINE = #{w.isOnline}
+					AND
+				</if>
+					<if test="w.state != null ">
+					STATE = #{w.state}
+					AND
+				</if>
+			</trim>
+		</where>
+	</update>
+	<delete id="delete" >
+		DELETE FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		<include refid="Base_Select" />
+		for update
+	</select>
+
+
+	<!--根据主键查询-->
+	<select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+		      <if test="id != null and  id != '' ">
+				 ID = #{id}  AND
+			  </if>
+			</trim>
+		</where>
+	</select>
+
+    <!--根据主键删除-->
+	<delete id="deleteByPrimaryKey">
+		DELETE FROM <include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+	        	<if test="id != null and  id != '' ">
+				  ID = #{id}  AND
+				</if>
+			</trim>
+		</where>
+	</delete>
+</mapper>

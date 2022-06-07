@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.ImRecUserRightMsg">
+	<resultMap type="com.dcits.im.jpa.model.MessageInfo" id="MessageInfo">
+		<id property="id" column="ID"/>
+		<id property="sessionId" column="SESSION_ID"/>
+		<id property="channel" column="CHANNEL"/>
+		<id property="fromUserId" column="FROM_USER_ID"/>
+		<id property="userId" column="USER_ID"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="direction" column="DIRECTION"/>
+		<result property="action" column="ACTION"/>
+		<result property="isRead" column="IS_READ"/>
+		<result property="title" column="TITLE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="readType" column="READ_TYPE"/>
+		<result property="format" column="FORMAT"/>
+		<result property="msgDate" column="MSG_DATE"/>
+		<result property="createTime" column="CREATE_TIME"/>
+	</resultMap>
+
+	<sql id="MessageInfoColumn">
+        ID,
+		SESSION_ID,
+		CHANNEL,
+		FROM_USER_ID,
+		USER_ID,
+		ACTION,
+		DIRECTION,
+		TITLE,
+		CONTENT,
+		FORMAT,
+		IS_READ,
+		CREATE_TIME
+    </sql>
+
+	<select id="selectListLeftAndRight" resultMap="MessageInfo">
+		select * from (
+		select
+		<include refid="MessageInfoColumn" />
+		from(
+		select id,session_id,channel,from_user_id, user_id, 2 action, 1 direction,''title, content, format, 1 is_read, create_time from im_rec_user_right_msg
+		union all
+		select id,session_id,channel,from_user_id, user_id, 2 action, 0 direction,''title, content, format, is_read, create_time from im_rec_user_left_msg
+		)
+		<where>
+			<trim suffixOverrides="AND">
+				<if test="sessionId != null and  sessionId != '' ">
+					session_id = #{sessionId}  AND
+				</if>
+				<if test="userId != null and  userId != '' ">
+					user_id = #{userId}  AND
+				</if>
+				<if test="id != null and  id != '' ">
+					ID &lt; #{id}  AND
+				</if>
+			</trim>
+		</where>
+		order by id desc
+		)
+		<where>
+			<if test="rows != null ">
+				rownum &lt;= #{rows}
+			</if>
+			<if test="rows == null ">
+				rownum &lt;= 10
+			</if>
+		</where>
+	</select>
+
+</mapper>

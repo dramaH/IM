@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.UmStaffInfo">
+    <resultMap type="com.dcits.im.jpa.model.ContactInfo" id="StaffInfoMap">
+        <id property="userId" column="USER_ID"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="userType" column="USER_TYPE"/>
+        <result property="clientNo" column="CLIENT_NO"/>
+        <result property="clientName" column="CLIENT_NAME"/>
+    </resultMap>
+
+    <sql id="StaffInfoColumn">
+        USER_ID,
+        USER_NAME,
+        USER_TYPE,
+        CLIENT_NO,
+        CLIENT_NAME
+    </sql>
+
+    <select id="selectListForRetailDealer" parameterType="java.util.Map" resultMap="StaffInfoMap">
+        SELECT
+        <include refid="StaffInfoColumn" />
+        FROM
+        (
+        SELECT ST.USER_ID,ST.USER_NAME,ST.USER_TYPE,CC.CLIENT_NO,CC.CLIENT_NAME
+        FROM UM_STAFF_INFO ST
+        LEFT JOIN CIF_CORP_CLIENT_INFO CC ON ST.WORK_NO = CC.CLIENT_NO
+        WHERE ST.WORK_NO IN (SELECT CHANNEL_NO FROM UM_REGION_MANAGER_INFO WHERE USER_ID=#{userId})
+        )
+        ORDER BY CLIENT_NO,USER_ID
+    </select>
+
+    <select id="selectListForBatchDealer" parameterType="java.util.Map" resultMap="StaffInfoMap">
+        SELECT
+        <include refid="StaffInfoColumn" />
+        FROM
+        (
+        SELECT ST.USER_ID,ST.USER_NAME,ST.USER_TYPE,CC.CLIENT_NO,CC.CLIENT_NAME
+        FROM UM_STAFF_INFO ST
+        LEFT JOIN CIF_CORP_CLIENT_INFO CC ON ST.WORK_NO = CC.CLIENT_NO
+        WHERE ST.WORK_NO IN (SELECT DEALER_CODE FROM DEALER_AM_CONFIG_INFO WHERE AM_ID=#{userId})
+        )
+        ORDER BY CLIENT_NO,USER_ID
+    </select>
+
+    <select id="selectListForSameWorkNo"  parameterType="java.util.Map" resultMap="StaffInfoMap">
+        SELECT
+        <include refid="StaffInfoColumn" />
+        FROM (
+        SELECT ST.USER_ID,ST.USER_NAME,ST.USER_TYPE,CC.CLIENT_NO,CC.CLIENT_NAME
+        FROM UM_STAFF_INFO ST
+        LEFT JOIN CIF_CORP_CLIENT_INFO CC ON ST.WORK_NO = CC.CLIENT_NO
+        WHERE WORK_NO IN (SELECT WORK_NO FROM UM_STAFF_INFO WHERE USER_ID=#{userId})
+        )
+        ORDER BY CLIENT_NO,USER_ID
+    </select>
+
+    <select id="selectListByUserRole"  parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column" />
+        FROM
+        um_staff_info st
+        <where>
+            <trim suffixOverrides="AND">
+                <if test="roleIds != null and roleIds.size() > 0 ">
+                    exists(select 1 from um_sys_user_role ur where st.user_id=ur.user_id and ur.role_id in(
+                    <foreach item="roleId" collection="roleIds" separator=",">
+                        #{roleId}
+                    </foreach>
+                    )) AND
+                </if>
+                <if test="userIds != null and  userIds.size() > 0 ">
+                    USER_ID in (
+                    <foreach item="userId" collection="userIds" separator=",">
+                        #{userId}
+                    </foreach>
+                    )  AND
+                </if>
+            </trim>
+        </where>
+    </select>
+
+
+
+</mapper>

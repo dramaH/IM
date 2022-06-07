@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.ImRecUserSession">
+	<resultMap id="BaseResultMap" type="com.dcits.im.jpa.entity.ImRecUserSession" >
+				<result column="ID" property="id"  jdbcType="VARCHAR"/>
+				<result column="SESSION_ID" property="sessionId"  jdbcType="VARCHAR"/>
+				<result column="SESSION_NAME" property="sessionName"  jdbcType="VARCHAR"/>
+				<result column="USER_ID" property="userId"  jdbcType="VARCHAR"/>
+				<result column="OPP_USER_ID" property="oppUserId"  jdbcType="VARCHAR"/>
+				<result column="IS_TOP" property="isTop"  jdbcType="INTEGER"/>
+				<result column="IS_ONLINE" property="isOnline"  jdbcType="INTEGER"/>
+				<result column="IS_OPEN" property="isOpen"  jdbcType="INTEGER"/>
+				<result column="MSG_TYPE" property="msgType"  jdbcType="INTEGER"/>
+				<result column="MSG_NUM" property="msgNum"  jdbcType="INTEGER"/>
+				<result column="NO_READ_NUM" property="noReadNum"  jdbcType="INTEGER"/>
+				<result column="CREATE_TIME" property="createTime"  jdbcType="DECIMAL"/>
+				<result column="TIMESTAMP" property="timestamp"  jdbcType="DECIMAL"/>
+				<result column="STATE" property="state"  jdbcType="INTEGER"/>
+	</resultMap>
+
+	<sql id="Table_Name">
+		IM_REC_USER_SESSION
+	</sql>
+
+	<sql id="Base_Column">
+				ID,
+				SESSION_ID,
+				SESSION_NAME,
+				USER_ID,
+				OPP_USER_ID,
+				IS_TOP,
+				IS_ONLINE,
+				IS_OPEN,
+				MSG_TYPE,
+				MSG_NUM,
+				NO_READ_NUM,
+				CREATE_TIME,
+				TIMESTAMP,
+				STATE
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+			<if test="id != null and  id != '' ">
+		       ID = #{id}  AND
+			</if>
+			<if test="sessionId != null and  sessionId != '' ">
+		       SESSION_ID = #{sessionId}  AND
+			</if>
+			<if test="sessionName != null and  sessionName != '' ">
+		       SESSION_NAME = #{sessionName}  AND
+			</if>
+			<if test="userId != null and  userId != '' ">
+		       USER_ID = #{userId}  AND
+			</if>
+			<if test="oppUserId != null and  oppUserId != '' ">
+		       OPP_USER_ID = #{oppUserId}  AND
+			</if>
+			<if test="isTop != null ">
+		       IS_TOP = #{isTop}  AND
+			</if>
+			<if test="isOnline != null ">
+		       IS_ONLINE = #{isOnline}  AND
+			</if>
+			<if test="isOpen != null ">
+		       IS_OPEN = #{isOpen}  AND
+			</if>
+			<if test="msgType != null ">
+		       MSG_TYPE = #{msgType}  AND
+			</if>
+			<if test="msgNum != null ">
+		       MSG_NUM = #{msgNum}  AND
+			</if>
+			<if test="noReadNum != null ">
+		       NO_READ_NUM = #{noReadNum}  AND
+			</if>
+			<if test="createTime != null ">
+		       CREATE_TIME = #{createTime}  AND
+			</if>
+			<if test="timestamp != null ">
+		       TIMESTAMP = #{timestamp}  AND
+			</if>
+			<if test="state != null ">
+		       STATE = #{state}  AND
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="comet_step_column">
+		<if test="cometSqlType == 'segment'"> ${cometKeyField} as KEY_FIELD </if>
+		<if test="cometSqlType == 'page'">  * </if>
+	</sql>
+
+	<sql id="comet_step_where">
+		<if test="cometStart != null and cometStart.length() > 0 and cometEnd != null and cometEnd.length() > 0" > and ${cometKeyField} between #{cometStart} and #{cometEnd} </if>
+	</sql>
+
+	<sql id="comet_row_num_step_column">
+		<if test="cometSqlType == 'total'"> count(*) </if>
+		<if test="cometSqlType == 'offset'">  * </if>
+	</sql>
+
+	<sql id="Base_Select">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+		        ID,
+			</if>
+			<if test="sessionId != null and  sessionId != '' ">
+		        SESSION_ID,
+			</if>
+			<if test="sessionName != null and  sessionName != '' ">
+		        SESSION_NAME,
+			</if>
+			<if test="userId != null and  userId != '' ">
+		        USER_ID,
+			</if>
+			<if test="oppUserId != null and  oppUserId != '' ">
+		        OPP_USER_ID,
+			</if>
+			<if test="isTop != null ">
+		        IS_TOP,
+			</if>
+			<if test="isOnline != null ">
+		        IS_ONLINE,
+			</if>
+			<if test="isOpen != null ">
+		        IS_OPEN,
+			</if>
+			<if test="msgType != null ">
+		        MSG_TYPE,
+			</if>
+			<if test="msgNum != null ">
+		        MSG_NUM,
+			</if>
+			<if test="noReadNum != null ">
+		        NO_READ_NUM,
+			</if>
+			<if test="createTime != null ">
+		        CREATE_TIME,
+			</if>
+			<if test="timestamp != null ">
+		        TIMESTAMP,
+			</if>
+			<if test="state != null ">
+		        STATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+				#{id},
+			</if>
+			<if test="sessionId != null and  sessionId != '' ">
+				#{sessionId},
+			</if>
+			<if test="sessionName != null and  sessionName != '' ">
+				#{sessionName},
+			</if>
+			<if test="userId != null and  userId != '' ">
+				#{userId},
+			</if>
+			<if test="oppUserId != null and  oppUserId != '' ">
+				#{oppUserId},
+			</if>
+			<if test="isTop != null ">
+				#{isTop},
+			</if>
+			<if test="isOnline != null ">
+				#{isOnline},
+			</if>
+			<if test="isOpen != null ">
+				#{isOpen},
+			</if>
+			<if test="msgType != null ">
+				#{msgType},
+			</if>
+			<if test="msgNum != null ">
+				#{msgNum},
+			</if>
+			<if test="noReadNum != null ">
+				#{noReadNum},
+			</if>
+			<if test="createTime != null ">
+				#{createTime},
+			</if>
+			<if test="timestamp != null ">
+				#{timestamp},
+			</if>
+			<if test="state != null ">
+				#{state},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update"  >
+		UPDATE <include refid="Table_Name" />
+		<set>
+			    <if test="sessionId != null and  sessionId != '' ">
+					    SESSION_ID = #{sessionId},
+				</if>
+			    <if test="sessionName != null and  sessionName != '' ">
+					    SESSION_NAME = #{sessionName},
+				</if>
+			    <if test="userId != null and  userId != '' ">
+					    USER_ID = #{userId},
+				</if>
+			    <if test="oppUserId != null and  oppUserId != '' ">
+					    OPP_USER_ID = #{oppUserId},
+				</if>
+				<if test="isTop != null ">
+					    IS_TOP = #{isTop},
+				</if>
+				<if test="isOnline != null ">
+					    IS_ONLINE = #{isOnline},
+				</if>
+				<if test="isOpen != null ">
+					    IS_OPEN = #{isOpen},
+				</if>
+				<if test="msgType != null ">
+					    MSG_TYPE = #{msgType},
+				</if>
+				<if test="msgNum != null ">
+					    MSG_NUM = #{msgNum},
+				</if>
+				<if test="noReadNum != null ">
+					    NO_READ_NUM = #{noReadNum},
+				</if>
+				<if test="createTime != null ">
+					    CREATE_TIME = #{createTime},
+				</if>
+				<if test="timestamp != null ">
+					    TIMESTAMP = #{timestamp},
+				</if>
+				<if test="state != null ">
+					    STATE = #{state},
+				</if>
+		</set>
+		<where>
+			<trim suffixOverrides="AND">
+				 <if test="id != null and  id != '' ">
+					 ID = #{id}  AND
+				 </if>
+			</trim>
+		</where>
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			  <if test="s.id != null and s.id != '' ">
+			    ID = #{s.id},
+			 </if>
+			  <if test="s.sessionId != null and s.sessionId != '' ">
+			    SESSION_ID = #{s.sessionId},
+			 </if>
+			  <if test="s.sessionName != null and s.sessionName != '' ">
+			    SESSION_NAME = #{s.sessionName},
+			 </if>
+			  <if test="s.userId != null and s.userId != '' ">
+			    USER_ID = #{s.userId},
+			 </if>
+			  <if test="s.oppUserId != null and s.oppUserId != '' ">
+			    OPP_USER_ID = #{s.oppUserId},
+			 </if>
+			  <if test="s.isTop != null ">
+			    IS_TOP = #{s.isTop},
+			 </if>
+			  <if test="s.isOnline != null ">
+			    IS_ONLINE = #{s.isOnline},
+			 </if>
+			  <if test="s.isOpen != null ">
+			    IS_OPEN = #{s.isOpen},
+			 </if>
+			  <if test="s.msgType != null ">
+			    MSG_TYPE = #{s.msgType},
+			 </if>
+			  <if test="s.msgNum != null ">
+			    MSG_NUM = #{s.msgNum},
+			 </if>
+			  <if test="s.noReadNum != null ">
+			    NO_READ_NUM = #{s.noReadNum},
+			 </if>
+			  <if test="s.createTime != null ">
+			    CREATE_TIME = #{s.createTime},
+			 </if>
+			  <if test="s.timestamp != null ">
+			    TIMESTAMP = #{s.timestamp},
+			 </if>
+			  <if test="s.state != null ">
+			    STATE = #{s.state},
+			 </if>
+		</set>
+		<where>
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+				    <if test="w.id != null and w.id != '' ">
+					ID = #{w.id}
+					AND
+				</if>
+				    <if test="w.sessionId != null and w.sessionId != '' ">
+					SESSION_ID = #{w.sessionId}
+					AND
+				</if>
+				    <if test="w.sessionName != null and w.sessionName != '' ">
+					SESSION_NAME = #{w.sessionName}
+					AND
+				</if>
+				    <if test="w.userId != null and w.userId != '' ">
+					USER_ID = #{w.userId}
+					AND
+				</if>
+				    <if test="w.oppUserId != null and w.oppUserId != '' ">
+					OPP_USER_ID = #{w.oppUserId}
+					AND
+				</if>
+					<if test="w.isTop != null ">
+					IS_TOP = #{w.isTop}
+					AND
+				</if>
+					<if test="w.isOnline != null ">
+					IS_ONLINE = #{w.isOnline}
+					AND
+				</if>
+					<if test="w.isOpen != null ">
+					IS_OPEN = #{w.isOpen}
+					AND
+				</if>
+					<if test="w.msgType != null ">
+					MSG_TYPE = #{w.msgType}
+					AND
+				</if>
+					<if test="w.msgNum != null ">
+					MSG_NUM = #{w.msgNum}
+					AND
+				</if>
+					<if test="w.noReadNum != null ">
+					NO_READ_NUM = #{w.noReadNum}
+					AND
+				</if>
+					<if test="w.createTime != null ">
+					CREATE_TIME = #{w.createTime}
+					AND
+				</if>
+					<if test="w.timestamp != null ">
+					TIMESTAMP = #{w.timestamp}
+					AND
+				</if>
+					<if test="w.state != null ">
+					STATE = #{w.state}
+					AND
+				</if>
+			</trim>
+		</where>
+	</update>
+	<delete id="delete" >
+		DELETE FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		<include refid="Base_Select" />
+		for update
+	</select>
+
+
+	<!--根据主键查询-->
+	<select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+		      <if test="id != null and  id != '' ">
+				 ID = #{id}  AND
+			  </if>
+			</trim>
+		</where>
+	</select>
+
+    <!--根据主键删除-->
+	<delete id="deleteByPrimaryKey">
+		DELETE FROM <include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+	        	<if test="id != null and  id != '' ">
+				  ID = #{id}  AND
+				</if>
+			</trim>
+		</where>
+	</delete>
+</mapper>

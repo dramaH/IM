@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.ImRecCshSessionTransfer">
+	<resultMap id="BaseResultMap" type="com.dcits.im.jpa.entity.ImRecCshSessionTransfer" >
+				<result column="ID" property="id"  jdbcType="VARCHAR"/>
+				<result column="CUST_USER_ID" property="custUserId"  jdbcType="VARCHAR"/>
+				<result column="SESSION_ID_OLD" property="sessionIdOld"  jdbcType="VARCHAR"/>
+				<result column="FROM_CSH_ID" property="fromCshId"  jdbcType="VARCHAR"/>
+				<result column="FROM_USER_ID" property="fromUserId"  jdbcType="VARCHAR"/>
+				<result column="SESSION_ID_NEW" property="sessionIdNew"  jdbcType="VARCHAR"/>
+				<result column="TO_CSH_ID" property="toCshId"  jdbcType="VARCHAR"/>
+				<result column="TO_USER_ID" property="toUserId"  jdbcType="VARCHAR"/>
+				<result column="CREATE_TIME" property="createTime"  jdbcType="DECIMAL"/>
+				<result column="TIMESTAMP" property="timestamp"  jdbcType="DECIMAL"/>
+				<result column="STATE" property="state"  jdbcType="INTEGER"/>
+	</resultMap>
+
+	<sql id="Table_Name">
+		IM_REC_CSH_SESSION_TRANSFER
+	</sql>
+
+	<sql id="Base_Column">
+				ID,
+				CUST_USER_ID,
+				SESSION_ID_OLD,
+				FROM_CSH_ID,
+				FROM_USER_ID,
+				SESSION_ID_NEW,
+				TO_CSH_ID,
+				TO_USER_ID,
+				CREATE_TIME,
+				TIMESTAMP,
+				STATE
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+			<if test="id != null and  id != '' ">
+		       ID = #{id}  AND
+			</if>
+			<if test="custUserId != null and  custUserId != '' ">
+		       CUST_USER_ID = #{custUserId}  AND
+			</if>
+			<if test="sessionIdOld != null and  sessionIdOld != '' ">
+		       SESSION_ID_OLD = #{sessionIdOld}  AND
+			</if>
+			<if test="fromCshId != null and  fromCshId != '' ">
+		       FROM_CSH_ID = #{fromCshId}  AND
+			</if>
+			<if test="fromUserId != null and  fromUserId != '' ">
+		       FROM_USER_ID = #{fromUserId}  AND
+			</if>
+			<if test="sessionIdNew != null and  sessionIdNew != '' ">
+		       SESSION_ID_NEW = #{sessionIdNew}  AND
+			</if>
+			<if test="toCshId != null and  toCshId != '' ">
+		       TO_CSH_ID = #{toCshId}  AND
+			</if>
+			<if test="toUserId != null and  toUserId != '' ">
+		       TO_USER_ID = #{toUserId}  AND
+			</if>
+			<if test="timestamp != null ">
+		       TIMESTAMP = #{timestamp}  AND
+			</if>
+			<if test="state != null ">
+		       STATE = #{state}  AND
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="comet_step_column">
+		<if test="cometSqlType == 'segment'"> ${cometKeyField} as KEY_FIELD </if>
+		<if test="cometSqlType == 'page'">  * </if>
+	</sql>
+
+	<sql id="comet_step_where">
+		<if test="cometStart != null and cometStart.length() > 0 and cometEnd != null and cometEnd.length() > 0" > and ${cometKeyField} between #{cometStart} and #{cometEnd} </if>
+	</sql>
+
+	<sql id="comet_row_num_step_column">
+		<if test="cometSqlType == 'total'"> count(*) </if>
+		<if test="cometSqlType == 'offset'">  * </if>
+	</sql>
+
+	<sql id="Base_Select">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+		        ID,
+			</if>
+			<if test="custUserId != null and  custUserId != '' ">
+		        CUST_USER_ID,
+			</if>
+			<if test="sessionIdOld != null and  sessionIdOld != '' ">
+		        SESSION_ID_OLD,
+			</if>
+			<if test="fromCshId != null and  fromCshId != '' ">
+		        FROM_CSH_ID,
+			</if>
+			<if test="fromUserId != null and  fromUserId != '' ">
+		        FROM_USER_ID,
+			</if>
+			<if test="sessionIdNew != null and  sessionIdNew != '' ">
+		        SESSION_ID_NEW,
+			</if>
+			<if test="toCshId != null and  toCshId != '' ">
+		        TO_CSH_ID,
+			</if>
+			<if test="toUserId != null and  toUserId != '' ">
+		        TO_USER_ID,
+			</if>
+			<if test="createTime != null ">
+				CREATE_TIME,
+			</if>
+			<if test="timestamp != null ">
+		        TIMESTAMP,
+			</if>
+			<if test="state != null ">
+		        STATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and  id != '' ">
+				#{id},
+			</if>
+			<if test="custUserId != null and  custUserId != '' ">
+				#{custUserId},
+			</if>
+			<if test="sessionIdOld != null and  sessionIdOld != '' ">
+				#{sessionIdOld},
+			</if>
+			<if test="fromCshId != null and  fromCshId != '' ">
+				#{fromCshId},
+			</if>
+			<if test="fromUserId != null and  fromUserId != '' ">
+				#{fromUserId},
+			</if>
+			<if test="sessionIdNew != null and  sessionIdNew != '' ">
+				#{sessionIdNew},
+			</if>
+			<if test="toCshId != null and  toCshId != '' ">
+				#{toCshId},
+			</if>
+			<if test="toUserId != null and  toUserId != '' ">
+				#{toUserId},
+			</if>
+			<if test="createTime != null ">
+				#{createTime},
+			</if>
+			<if test="timestamp != null ">
+				#{timestamp},
+			</if>
+			<if test="state != null ">
+				#{state},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update"  >
+		UPDATE <include refid="Table_Name" />
+		<set>
+			    <if test="custUserId != null and  custUserId != '' ">
+					    CUST_USER_ID = #{custUserId},
+				</if>
+			    <if test="sessionIdOld != null and  sessionIdOld != '' ">
+					    SESSION_ID_OLD = #{sessionIdOld},
+				</if>
+			    <if test="fromCshId != null and  fromCshId != '' ">
+					    FROM_CSH_ID = #{fromCshId},
+				</if>
+			    <if test="fromUserId != null and  fromUserId != '' ">
+					    FROM_USER_ID = #{fromUserId},
+				</if>
+			    <if test="sessionIdNew != null and  sessionIdNew != '' ">
+					    SESSION_ID_NEW = #{sessionIdNew},
+				</if>
+			    <if test="toCshId != null and  toCshId != '' ">
+					    TO_CSH_ID = #{toCshId},
+				</if>
+			    <if test="toUserId != null and  toUserId != '' ">
+					    TO_USER_ID = #{toUserId},
+				</if>
+				<if test="timestamp != null ">
+					    TIMESTAMP = #{timestamp},
+				</if>
+				<if test="state != null ">
+					    STATE = #{state},
+				</if>
+		</set>
+		<where>
+			<trim suffixOverrides="AND">
+				 <if test="id != null and  id != '' ">
+					 ID = #{id}  AND
+				 </if>
+			</trim>
+		</where>
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			  <if test="s.id != null and s.id != '' ">
+			    ID = #{s.id},
+			 </if>
+			  <if test="s.custUserId != null and s.custUserId != '' ">
+			    CUST_USER_ID = #{s.custUserId},
+			 </if>
+			  <if test="s.sessionIdOld != null and s.sessionIdOld != '' ">
+			    SESSION_ID_OLD = #{s.sessionIdOld},
+			 </if>
+			  <if test="s.fromCshId != null and s.fromCshId != '' ">
+			    FROM_CSH_ID = #{s.fromCshId},
+			 </if>
+			  <if test="s.fromUserId != null and s.fromUserId != '' ">
+			    FROM_USER_ID = #{s.fromUserId},
+			 </if>
+			  <if test="s.sessionIdNew != null and s.sessionIdNew != '' ">
+			    SESSION_ID_NEW = #{s.sessionIdNew},
+			 </if>
+			  <if test="s.toCshId != null and s.toCshId != '' ">
+			    TO_CSH_ID = #{s.toCshId},
+			 </if>
+			  <if test="s.toUserId != null and s.toUserId != '' ">
+			    TO_USER_ID = #{s.toUserId},
+			 </if>
+			  <if test="s.timestamp != null ">
+			    TIMESTAMP = #{s.timestamp},
+			 </if>
+			  <if test="s.state != null ">
+			    STATE = #{s.state},
+			 </if>
+		</set>
+		<where>
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+				    <if test="w.id != null and w.id != '' ">
+					ID = #{w.id}
+					AND
+				</if>
+				    <if test="w.custUserId != null and w.custUserId != '' ">
+					CUST_USER_ID = #{w.custUserId}
+					AND
+				</if>
+				    <if test="w.sessionIdOld != null and w.sessionIdOld != '' ">
+					SESSION_ID_OLD = #{w.sessionIdOld}
+					AND
+				</if>
+				    <if test="w.fromCshId != null and w.fromCshId != '' ">
+					FROM_CSH_ID = #{w.fromCshId}
+					AND
+				</if>
+				    <if test="w.fromUserId != null and w.fromUserId != '' ">
+					FROM_USER_ID = #{w.fromUserId}
+					AND
+				</if>
+				    <if test="w.sessionIdNew != null and w.sessionIdNew != '' ">
+					SESSION_ID_NEW = #{w.sessionIdNew}
+					AND
+				</if>
+				    <if test="w.toCshId != null and w.toCshId != '' ">
+					TO_CSH_ID = #{w.toCshId}
+					AND
+				</if>
+				    <if test="w.toUserId != null and w.toUserId != '' ">
+					TO_USER_ID = #{w.toUserId}
+					AND
+				</if>
+					<if test="w.timestamp != null ">
+					TIMESTAMP = #{w.timestamp}
+					AND
+				</if>
+					<if test="w.state != null ">
+					STATE = #{w.state}
+					AND
+				</if>
+			</trim>
+		</where>
+	</update>
+	<delete id="delete" >
+		DELETE FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		<include refid="Base_Select" />
+		for update
+	</select>
+
+
+	<!--根据主键查询-->
+	<select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+		      <if test="id != null and  id != '' ">
+				 ID = #{id}  AND
+			  </if>
+			</trim>
+		</where>
+	</select>
+
+    <!--根据主键删除-->
+	<delete id="deleteByPrimaryKey">
+		DELETE FROM <include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+	        	<if test="id != null and  id != '' ">
+				  ID = #{id}  AND
+				</if>
+			</trim>
+		</where>
+	</delete>
+</mapper>

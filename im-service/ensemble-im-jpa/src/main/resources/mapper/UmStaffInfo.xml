@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.UmStaffInfo">
+	<resultMap id="BaseResultMap" type="com.dcits.im.jpa.entity.UmStaffInfo" >
+				<result column="STAFF_ID" property="staffId"  jdbcType="VARCHAR"/>
+				<result column="USER_ID" property="userId"  jdbcType="VARCHAR"/>
+				<result column="USER_NAME" property="userName"  jdbcType="VARCHAR"/>
+				<result column="DEPARTMENT_NO" property="departmentNo"  jdbcType="VARCHAR"/>
+				<result column="STAFF_TYPE" property="staffType"  jdbcType="VARCHAR"/>
+				<result column="USER_BIG_TYPE" property="userBigType"  jdbcType="VARCHAR"/>
+				<result column="USER_CATEGORY" property="userCategory"  jdbcType="VARCHAR"/>
+				<result column="WORK_TYPE" property="workType"  jdbcType="VARCHAR"/>
+				<result column="WORK_NO" property="workNo"  jdbcType="VARCHAR"/>
+				<result column="USER_TYPE" property="userType"  jdbcType="VARCHAR"/>
+				<result column="SP_ADMIN_TYPE" property="spAdminType"  jdbcType="VARCHAR"/>
+				<result column="BRANCH_NO" property="branchNo"  jdbcType="VARCHAR"/>
+				<result column="OUTLET_NO" property="outletNo"  jdbcType="VARCHAR"/>
+				<result column="SEX" property="sex"  jdbcType="VARCHAR"/>
+				<result column="DOCUMENT_ID" property="documentId"  jdbcType="VARCHAR"/>
+				<result column="MOBILE" property="mobile"  jdbcType="VARCHAR"/>
+				<result column="TELEPHONE" property="telephone"  jdbcType="VARCHAR"/>
+				<result column="REMARK" property="remark"  jdbcType="VARCHAR"/>
+				<result column="EMAIL" property="email"  jdbcType="VARCHAR"/>
+				<result column="USER_PROFILE" property="userProfile"  jdbcType="VARCHAR"/>
+				<result column="STAFF_SEAL_ID" property="staffSealId"  jdbcType="VARCHAR"/>
+				<result column="USER_STATUS" property="userStatus"  jdbcType="VARCHAR"/>
+				<result column="LAST_UPDATE_USER" property="lastUpdateUser"  jdbcType="VARCHAR"/>
+				<result column="LAST_UPDATE_TIME" property="lastUpdateTime"  jdbcType="DATE"/>
+				<result column="CREATE_USER" property="createUser"  jdbcType="VARCHAR"/>
+				<result column="CREATE_TIME" property="createTime"  jdbcType="DATE"/>
+	</resultMap>
+
+	<sql id="Table_Name">
+		UM_STAFF_INFO
+	</sql>
+
+	<sql id="Base_Column">
+				STAFF_ID,
+				USER_ID,
+				USER_NAME,
+				DEPARTMENT_NO,
+				STAFF_TYPE,
+				USER_BIG_TYPE,
+				USER_CATEGORY,
+				WORK_TYPE,
+				WORK_NO,
+				USER_TYPE,
+				SP_ADMIN_TYPE,
+				BRANCH_NO,
+				OUTLET_NO,
+				SEX,
+				DOCUMENT_ID,
+				MOBILE,
+				TELEPHONE,
+				REMARK,
+				EMAIL,
+				USER_PROFILE,
+				STAFF_SEAL_ID,
+				USER_STATUS,
+				LAST_UPDATE_USER,
+				LAST_UPDATE_TIME,
+				CREATE_USER,
+				CREATE_TIME
+	</sql>
+
+	<sql id="Base_Where">
+		<trim suffixOverrides="AND">
+			<if test="staffId != null and  staffId != '' ">
+		       STAFF_ID = #{staffId}  AND
+			</if>
+			<if test="userId != null and  userId != '' ">
+		       USER_ID = #{userId}  AND
+			</if>
+			<if test="userName != null and  userName != '' ">
+		       USER_NAME = #{userName}  AND
+			</if>
+			<if test="departmentNo != null and  departmentNo != '' ">
+		       DEPARTMENT_NO = #{departmentNo}  AND
+			</if>
+			<if test="staffType != null and  staffType != '' ">
+		       STAFF_TYPE = #{staffType}  AND
+			</if>
+			<if test="userBigType != null and  userBigType != '' ">
+		       USER_BIG_TYPE = #{userBigType}  AND
+			</if>
+			<if test="userCategory != null and  userCategory != '' ">
+		       USER_CATEGORY = #{userCategory}  AND
+			</if>
+			<if test="workType != null and  workType != '' ">
+		       WORK_TYPE = #{workType}  AND
+			</if>
+			<if test="workNo != null and  workNo != '' ">
+		       WORK_NO = #{workNo}  AND
+			</if>
+			<if test="userType != null and  userType != '' ">
+		       USER_TYPE = #{userType}  AND
+			</if>
+			<if test="spAdminType != null and  spAdminType != '' ">
+		       SP_ADMIN_TYPE = #{spAdminType}  AND
+			</if>
+			<if test="branchNo != null and  branchNo != '' ">
+		       BRANCH_NO = #{branchNo}  AND
+			</if>
+			<if test="outletNo != null and  outletNo != '' ">
+		       OUTLET_NO = #{outletNo}  AND
+			</if>
+			<if test="sex != null and  sex != '' ">
+		       SEX = #{sex}  AND
+			</if>
+			<if test="documentId != null and  documentId != '' ">
+		       DOCUMENT_ID = #{documentId}  AND
+			</if>
+			<if test="mobile != null and  mobile != '' ">
+		       MOBILE = #{mobile}  AND
+			</if>
+			<if test="telephone != null and  telephone != '' ">
+		       TELEPHONE = #{telephone}  AND
+			</if>
+			<if test="remark != null and  remark != '' ">
+		       REMARK = #{remark}  AND
+			</if>
+			<if test="email != null and  email != '' ">
+		       EMAIL = #{email}  AND
+			</if>
+			<if test="userProfile != null and  userProfile != '' ">
+		       USER_PROFILE = #{userProfile}  AND
+			</if>
+			<if test="staffSealId != null and  staffSealId != '' ">
+		       STAFF_SEAL_ID = #{staffSealId}  AND
+			</if>
+			<if test="userStatus != null and  userStatus != '' ">
+		       USER_STATUS = #{userStatus}  AND
+			</if>
+			<if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+		       LAST_UPDATE_USER = #{lastUpdateUser}  AND
+			</if>
+			<if test="lastUpdateTime != null ">
+		       LAST_UPDATE_TIME = #{lastUpdateTime}  AND
+			</if>
+			<if test="createUser != null and  createUser != '' ">
+		       CREATE_USER = #{createUser}  AND
+			</if>
+			<if test="createTime != null ">
+		       CREATE_TIME = #{createTime}  AND
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="comet_step_column">
+		<if test="cometSqlType == 'segment'"> ${cometKeyField} as KEY_FIELD </if>
+		<if test="cometSqlType == 'page'">  * </if>
+	</sql>
+
+	<sql id="comet_step_where">
+		<if test="cometStart != null and cometStart.length() > 0 and cometEnd != null and cometEnd.length() > 0" > and ${cometKeyField} between #{cometStart} and #{cometEnd} </if>
+	</sql>
+
+	<sql id="comet_row_num_step_column">
+		<if test="cometSqlType == 'total'"> count(*) </if>
+		<if test="cometSqlType == 'offset'">  * </if>
+	</sql>
+
+	<sql id="Base_Select">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</sql>
+
+	<insert id="insert" >
+		insert into
+		<include refid="Table_Name" />
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="staffId != null and  staffId != '' ">
+		        STAFF_ID,
+			</if>
+			<if test="userId != null and  userId != '' ">
+		        USER_ID,
+			</if>
+			<if test="userName != null and  userName != '' ">
+		        USER_NAME,
+			</if>
+			<if test="departmentNo != null and  departmentNo != '' ">
+		        DEPARTMENT_NO,
+			</if>
+			<if test="staffType != null and  staffType != '' ">
+		        STAFF_TYPE,
+			</if>
+			<if test="userBigType != null and  userBigType != '' ">
+		        USER_BIG_TYPE,
+			</if>
+			<if test="userCategory != null and  userCategory != '' ">
+		        USER_CATEGORY,
+			</if>
+			<if test="workType != null and  workType != '' ">
+		        WORK_TYPE,
+			</if>
+			<if test="workNo != null and  workNo != '' ">
+		        WORK_NO,
+			</if>
+			<if test="userType != null and  userType != '' ">
+		        USER_TYPE,
+			</if>
+			<if test="spAdminType != null and  spAdminType != '' ">
+		        SP_ADMIN_TYPE,
+			</if>
+			<if test="branchNo != null and  branchNo != '' ">
+		        BRANCH_NO,
+			</if>
+			<if test="outletNo != null and  outletNo != '' ">
+		        OUTLET_NO,
+			</if>
+			<if test="sex != null and  sex != '' ">
+		        SEX,
+			</if>
+			<if test="documentId != null and  documentId != '' ">
+		        DOCUMENT_ID,
+			</if>
+			<if test="mobile != null and  mobile != '' ">
+		        MOBILE,
+			</if>
+			<if test="telephone != null and  telephone != '' ">
+		        TELEPHONE,
+			</if>
+			<if test="remark != null and  remark != '' ">
+		        REMARK,
+			</if>
+			<if test="email != null and  email != '' ">
+		        EMAIL,
+			</if>
+			<if test="userProfile != null and  userProfile != '' ">
+		        USER_PROFILE,
+			</if>
+			<if test="staffSealId != null and  staffSealId != '' ">
+		        STAFF_SEAL_ID,
+			</if>
+			<if test="userStatus != null and  userStatus != '' ">
+		        USER_STATUS,
+			</if>
+			<if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+		        LAST_UPDATE_USER,
+			</if>
+			<if test="lastUpdateTime != null ">
+		        LAST_UPDATE_TIME,
+			</if>
+			<if test="createUser != null and  createUser != '' ">
+		        CREATE_USER,
+			</if>
+			<if test="createTime != null ">
+		        CREATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="staffId != null and  staffId != '' ">
+				#{staffId},
+			</if>
+			<if test="userId != null and  userId != '' ">
+				#{userId},
+			</if>
+			<if test="userName != null and  userName != '' ">
+				#{userName},
+			</if>
+			<if test="departmentNo != null and  departmentNo != '' ">
+				#{departmentNo},
+			</if>
+			<if test="staffType != null and  staffType != '' ">
+				#{staffType},
+			</if>
+			<if test="userBigType != null and  userBigType != '' ">
+				#{userBigType},
+			</if>
+			<if test="userCategory != null and  userCategory != '' ">
+				#{userCategory},
+			</if>
+			<if test="workType != null and  workType != '' ">
+				#{workType},
+			</if>
+			<if test="workNo != null and  workNo != '' ">
+				#{workNo},
+			</if>
+			<if test="userType != null and  userType != '' ">
+				#{userType},
+			</if>
+			<if test="spAdminType != null and  spAdminType != '' ">
+				#{spAdminType},
+			</if>
+			<if test="branchNo != null and  branchNo != '' ">
+				#{branchNo},
+			</if>
+			<if test="outletNo != null and  outletNo != '' ">
+				#{outletNo},
+			</if>
+			<if test="sex != null and  sex != '' ">
+				#{sex},
+			</if>
+			<if test="documentId != null and  documentId != '' ">
+				#{documentId},
+			</if>
+			<if test="mobile != null and  mobile != '' ">
+				#{mobile},
+			</if>
+			<if test="telephone != null and  telephone != '' ">
+				#{telephone},
+			</if>
+			<if test="remark != null and  remark != '' ">
+				#{remark},
+			</if>
+			<if test="email != null and  email != '' ">
+				#{email},
+			</if>
+			<if test="userProfile != null and  userProfile != '' ">
+				#{userProfile},
+			</if>
+			<if test="staffSealId != null and  staffSealId != '' ">
+				#{staffSealId},
+			</if>
+			<if test="userStatus != null and  userStatus != '' ">
+				#{userStatus},
+			</if>
+			<if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+				#{lastUpdateUser},
+			</if>
+			<if test="lastUpdateTime != null ">
+				#{lastUpdateTime},
+			</if>
+			<if test="createUser != null and  createUser != '' ">
+				#{createUser},
+			</if>
+			<if test="createTime != null ">
+				#{createTime},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update"  >
+		UPDATE <include refid="Table_Name" />
+		<set>
+			    <if test="userId != null and  userId != '' ">
+					    USER_ID = #{userId},
+				</if>
+			    <if test="userName != null and  userName != '' ">
+					    USER_NAME = #{userName},
+				</if>
+			    <if test="departmentNo != null and  departmentNo != '' ">
+					    DEPARTMENT_NO = #{departmentNo},
+				</if>
+			    <if test="staffType != null and  staffType != '' ">
+					    STAFF_TYPE = #{staffType},
+				</if>
+			    <if test="userBigType != null and  userBigType != '' ">
+					    USER_BIG_TYPE = #{userBigType},
+				</if>
+			    <if test="userCategory != null and  userCategory != '' ">
+					    USER_CATEGORY = #{userCategory},
+				</if>
+			    <if test="workType != null and  workType != '' ">
+					    WORK_TYPE = #{workType},
+				</if>
+			    <if test="workNo != null and  workNo != '' ">
+					    WORK_NO = #{workNo},
+				</if>
+			    <if test="userType != null and  userType != '' ">
+					    USER_TYPE = #{userType},
+				</if>
+			    <if test="spAdminType != null and  spAdminType != '' ">
+					    SP_ADMIN_TYPE = #{spAdminType},
+				</if>
+			    <if test="branchNo != null and  branchNo != '' ">
+					    BRANCH_NO = #{branchNo},
+				</if>
+			    <if test="outletNo != null and  outletNo != '' ">
+					    OUTLET_NO = #{outletNo},
+				</if>
+			    <if test="sex != null and  sex != '' ">
+					    SEX = #{sex},
+				</if>
+			    <if test="documentId != null and  documentId != '' ">
+					    DOCUMENT_ID = #{documentId},
+				</if>
+			    <if test="mobile != null and  mobile != '' ">
+					    MOBILE = #{mobile},
+				</if>
+			    <if test="telephone != null and  telephone != '' ">
+					    TELEPHONE = #{telephone},
+				</if>
+			    <if test="remark != null and  remark != '' ">
+					    REMARK = #{remark},
+				</if>
+			    <if test="email != null and  email != '' ">
+					    EMAIL = #{email},
+				</if>
+			    <if test="userProfile != null and  userProfile != '' ">
+					    USER_PROFILE = #{userProfile},
+				</if>
+			    <if test="staffSealId != null and  staffSealId != '' ">
+					    STAFF_SEAL_ID = #{staffSealId},
+				</if>
+			    <if test="userStatus != null and  userStatus != '' ">
+					    USER_STATUS = #{userStatus},
+				</if>
+			    <if test="lastUpdateUser != null and  lastUpdateUser != '' ">
+					    LAST_UPDATE_USER = #{lastUpdateUser},
+				</if>
+				<if test="lastUpdateTime != null ">
+					    LAST_UPDATE_TIME = #{lastUpdateTime},
+				</if>
+			    <if test="createUser != null and  createUser != '' ">
+					    CREATE_USER = #{createUser},
+				</if>
+				<if test="createTime != null ">
+					    CREATE_TIME = #{createTime},
+				</if>
+		</set>
+		<where>
+			<trim suffixOverrides="AND">
+				 <if test="staffId != null and  staffId != '' ">
+					 STAFF_ID = #{staffId}  AND
+				 </if>
+			</trim>
+		</where>
+	</update>
+
+	<update id="updateByEntity" >
+		UPDATE
+		<include refid="Table_Name" />
+		<set>
+			  <if test="s.staffId != null and s.staffId != '' ">
+			    STAFF_ID = #{s.staffId},
+			 </if>
+			  <if test="s.userId != null and s.userId != '' ">
+			    USER_ID = #{s.userId},
+			 </if>
+			  <if test="s.userName != null and s.userName != '' ">
+			    USER_NAME = #{s.userName},
+			 </if>
+			  <if test="s.departmentNo != null and s.departmentNo != '' ">
+			    DEPARTMENT_NO = #{s.departmentNo},
+			 </if>
+			  <if test="s.staffType != null and s.staffType != '' ">
+			    STAFF_TYPE = #{s.staffType},
+			 </if>
+			  <if test="s.userBigType != null and s.userBigType != '' ">
+			    USER_BIG_TYPE = #{s.userBigType},
+			 </if>
+			  <if test="s.userCategory != null and s.userCategory != '' ">
+			    USER_CATEGORY = #{s.userCategory},
+			 </if>
+			  <if test="s.workType != null and s.workType != '' ">
+			    WORK_TYPE = #{s.workType},
+			 </if>
+			  <if test="s.workNo != null and s.workNo != '' ">
+			    WORK_NO = #{s.workNo},
+			 </if>
+			  <if test="s.userType != null and s.userType != '' ">
+			    USER_TYPE = #{s.userType},
+			 </if>
+			  <if test="s.spAdminType != null and s.spAdminType != '' ">
+			    SP_ADMIN_TYPE = #{s.spAdminType},
+			 </if>
+			  <if test="s.branchNo != null and s.branchNo != '' ">
+			    BRANCH_NO = #{s.branchNo},
+			 </if>
+			  <if test="s.outletNo != null and s.outletNo != '' ">
+			    OUTLET_NO = #{s.outletNo},
+			 </if>
+			  <if test="s.sex != null and s.sex != '' ">
+			    SEX = #{s.sex},
+			 </if>
+			  <if test="s.documentId != null and s.documentId != '' ">
+			    DOCUMENT_ID = #{s.documentId},
+			 </if>
+			  <if test="s.mobile != null and s.mobile != '' ">
+			    MOBILE = #{s.mobile},
+			 </if>
+			  <if test="s.telephone != null and s.telephone != '' ">
+			    TELEPHONE = #{s.telephone},
+			 </if>
+			  <if test="s.remark != null and s.remark != '' ">
+			    REMARK = #{s.remark},
+			 </if>
+			  <if test="s.email != null and s.email != '' ">
+			    EMAIL = #{s.email},
+			 </if>
+			  <if test="s.userProfile != null and s.userProfile != '' ">
+			    USER_PROFILE = #{s.userProfile},
+			 </if>
+			  <if test="s.staffSealId != null and s.staffSealId != '' ">
+			    STAFF_SEAL_ID = #{s.staffSealId},
+			 </if>
+			  <if test="s.userStatus != null and s.userStatus != '' ">
+			    USER_STATUS = #{s.userStatus},
+			 </if>
+			  <if test="s.lastUpdateUser != null and s.lastUpdateUser != '' ">
+			    LAST_UPDATE_USER = #{s.lastUpdateUser},
+			 </if>
+			  <if test="s.lastUpdateTime != null ">
+			    LAST_UPDATE_TIME = #{s.lastUpdateTime},
+			 </if>
+			  <if test="s.createUser != null and s.createUser != '' ">
+			    CREATE_USER = #{s.createUser},
+			 </if>
+			  <if test="s.createTime != null ">
+			    CREATE_TIME = #{s.createTime},
+			 </if>
+		</set>
+		<where>
+			<trim prefix="(" suffix=")" suffixOverrides="AND">
+				    <if test="w.staffId != null and w.staffId != '' ">
+					STAFF_ID = #{w.staffId}
+					AND
+				</if>
+				    <if test="w.userId != null and w.userId != '' ">
+					USER_ID = #{w.userId}
+					AND
+				</if>
+				    <if test="w.userName != null and w.userName != '' ">
+					USER_NAME = #{w.userName}
+					AND
+				</if>
+				    <if test="w.departmentNo != null and w.departmentNo != '' ">
+					DEPARTMENT_NO = #{w.departmentNo}
+					AND
+				</if>
+				    <if test="w.staffType != null and w.staffType != '' ">
+					STAFF_TYPE = #{w.staffType}
+					AND
+				</if>
+				    <if test="w.userBigType != null and w.userBigType != '' ">
+					USER_BIG_TYPE = #{w.userBigType}
+					AND
+				</if>
+				    <if test="w.userCategory != null and w.userCategory != '' ">
+					USER_CATEGORY = #{w.userCategory}
+					AND
+				</if>
+				    <if test="w.workType != null and w.workType != '' ">
+					WORK_TYPE = #{w.workType}
+					AND
+				</if>
+				    <if test="w.workNo != null and w.workNo != '' ">
+					WORK_NO = #{w.workNo}
+					AND
+				</if>
+				    <if test="w.userType != null and w.userType != '' ">
+					USER_TYPE = #{w.userType}
+					AND
+				</if>
+				    <if test="w.spAdminType != null and w.spAdminType != '' ">
+					SP_ADMIN_TYPE = #{w.spAdminType}
+					AND
+				</if>
+				    <if test="w.branchNo != null and w.branchNo != '' ">
+					BRANCH_NO = #{w.branchNo}
+					AND
+				</if>
+				    <if test="w.outletNo != null and w.outletNo != '' ">
+					OUTLET_NO = #{w.outletNo}
+					AND
+				</if>
+				    <if test="w.sex != null and w.sex != '' ">
+					SEX = #{w.sex}
+					AND
+				</if>
+				    <if test="w.documentId != null and w.documentId != '' ">
+					DOCUMENT_ID = #{w.documentId}
+					AND
+				</if>
+				    <if test="w.mobile != null and w.mobile != '' ">
+					MOBILE = #{w.mobile}
+					AND
+				</if>
+				    <if test="w.telephone != null and w.telephone != '' ">
+					TELEPHONE = #{w.telephone}
+					AND
+				</if>
+				    <if test="w.remark != null and w.remark != '' ">
+					REMARK = #{w.remark}
+					AND
+				</if>
+				    <if test="w.email != null and w.email != '' ">
+					EMAIL = #{w.email}
+					AND
+				</if>
+				    <if test="w.userProfile != null and w.userProfile != '' ">
+					USER_PROFILE = #{w.userProfile}
+					AND
+				</if>
+				    <if test="w.staffSealId != null and w.staffSealId != '' ">
+					STAFF_SEAL_ID = #{w.staffSealId}
+					AND
+				</if>
+				    <if test="w.userStatus != null and w.userStatus != '' ">
+					USER_STATUS = #{w.userStatus}
+					AND
+				</if>
+				    <if test="w.lastUpdateUser != null and w.lastUpdateUser != '' ">
+					LAST_UPDATE_USER = #{w.lastUpdateUser}
+					AND
+				</if>
+					<if test="w.lastUpdateTime != null ">
+					LAST_UPDATE_TIME = #{w.lastUpdateTime}
+					AND
+				</if>
+				    <if test="w.createUser != null and w.createUser != '' ">
+					CREATE_USER = #{w.createUser}
+					AND
+				</if>
+					<if test="w.createTime != null ">
+					CREATE_TIME = #{w.createTime}
+					AND
+				</if>
+			</trim>
+		</where>
+	</update>
+	<delete id="delete" >
+		DELETE FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</delete>
+
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		select count(1) from
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Base_Where" />
+		</where>
+	</select>
+
+	<select id="selectOne"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectList"  resultMap="BaseResultMap">
+		<include refid="Base_Select" />
+	</select>
+
+	<select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+		<include refid="Base_Select" />
+		for update
+	</select>
+
+
+	<!--根据主键查询-->
+	<select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+		      <if test="staffId != null and  staffId != '' ">
+				 STAFF_ID = #{staffId}  AND
+			  </if>
+			</trim>
+		</where>
+	</select>
+
+    <!--根据主键删除-->
+	<delete id="deleteByPrimaryKey">
+		DELETE FROM <include refid="Table_Name" />
+		<where>
+			<trim suffixOverrides="AND">
+	        	<if test="staffId != null and  staffId != '' ">
+				  STAFF_ID = #{staffId}  AND
+				</if>
+			</trim>
+		</where>
+	</delete>
+</mapper>

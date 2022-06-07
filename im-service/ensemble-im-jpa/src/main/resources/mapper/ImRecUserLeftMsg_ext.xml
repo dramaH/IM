@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dcits.im.jpa.entity.ImRecUserLeftMsg">
+	<sql id="Times_Where">
+		<trim suffixOverrides="AND">
+			<if test="id != null and  id != '' ">
+				ID = #{id}  AND
+			</if>
+			<if test="sessionId != null and  sessionId != '' ">
+				SESSION_ID = #{sessionId}  AND
+			</if>
+			<if test="channel != null and  channel != '' ">
+				CHANNEL = #{channel}  AND
+			</if>
+			<if test="userId != null and  userId != '' ">
+				USER_ID = #{userId}  AND
+			</if>
+			<if test="fromUserId != null and  fromUserId != '' ">
+				FROM_USER_ID = #{fromUserId}  AND
+			</if>
+			<if test="toUserId != null and  toUserId != '' ">
+				TO_USER_ID = #{toUserId}  AND
+			</if>
+			<if test="content != null and  content != '' ">
+				CONTENT = #{content}  AND
+			</if>
+			<if test="format != null ">
+				FORMAT = #{format}  AND
+			</if>
+			<if test="isRead != null ">
+				IS_READ = #{isRead}  AND
+			</if>
+			<if test="timestamp != null ">
+				TIMESTAMP &lt;= #{timestamp}  AND
+			</if>
+			<if test="state != null ">
+				STATE = #{state}  AND
+			</if>
+		</trim>
+	</sql>
+	<select id="selectListForRead" parameterType="java.util.Map" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column" />
+		FROM
+		<include refid="Table_Name" />
+		<where>
+			<include refid="Times_Where" />
+		</where>
+	</select>
+</mapper>
